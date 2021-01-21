@@ -55,7 +55,7 @@
             <!-- Nav Item - Pages Collapse Menu -->
                   <!-- Nav Item - Tables -->
                   <li class="nav-item">
-                    <a class="nav-link" href="tables.php    ">
+                    <a class="nav-link" href="<?= base_url();?>C_Data/index/ ">
                         <i class="fa fa-clipboard" aria-hidden="true"></i>
                         <span>Data</span></a>
                 </li>

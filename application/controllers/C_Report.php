@@ -2,7 +2,7 @@
     
     defined('BASEPATH') OR exit('No direct script access allowed');
     
-    class C_Report extends CI_Controller {
+    class C_report extends CI_Controller {
         public function __construct()
         {
             parent::__construct();
@@ -12,7 +12,20 @@
         public function index()
         {
           
-            $this->load->view('/user/lapor.php');
+    
+
+            // template
+            $this->load->view('template/V_template_header'); // header
+            $this->load->view('user/V_lapor'); // main content
+            $this->load->view('template/V_template_footer'); // footer
+
+
+            
+        }
+        public function test()
+        {
+          
+           echo"Hello!";
             
         }
     }
