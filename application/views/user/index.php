@@ -50,7 +50,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#portfolio">Gallery</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="#report"> Report <i class="fas fa-user-clock "></i> </a></li>
+          <li><a href="<?= base_url();?>C_Report/index/"> Report <i class="fas fa-user-clock "></i> </a></li>
 
           <li class="get-started"><a href="<?= base_url();?>C_Login/index/">Login <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </a></li>
         </ul>
@@ -231,9 +231,10 @@
               <h3>Bakesbangpol Kota Malang </h3>
               <p></p>
               <div class="social-links">
-                <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-                <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-                <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+                <a href="https://twitter.com/bakesbang" class="twitter"><i class="icofont-twitter"></i></a>
+                <a href="https://www.facebook.com/Bakesbangpolmalang/" class="facebook"><i class="icofont-facebook"></i></a>
+                <a href="https://bakesbangpol.malangkota.go.id/" class="Website"><i class="fa fa-link" ></i> </a>
+                <a href="https://www.instagram.com/bakesbangpol_malangkota/" class="Instagram"><i class="icofont-instagram"></i>  </a>
               </div>
             </div>
           </div>
@@ -252,7 +253,7 @@
 
               <div> 
                 <i class="ri-phone-line"></i>
-                <p>+1 5589 55488 55s</p>
+                <p>(0341) 491180</p>
               </div>
 
             </div>
