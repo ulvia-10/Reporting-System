@@ -10,8 +10,16 @@
         } 
         public function index()
         {
-            $this->load->view('login/login.php');
+            $this->load->view('login/login');
+        }
+        public function register()
+        {
+            $this->load->view('login/register');
+        }
+        public function forgotpassword()
+        {
+            $this->load->view('login/forgot-password');
         }
     }
     ?>
-    
+        

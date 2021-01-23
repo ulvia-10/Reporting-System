@@ -11,8 +11,9 @@
         } 
         public function index()
         {
-          
-            $this->load->views('/admin/index.php');
+            $this->load->view('template/V_template_admin_header');
+            $this->load->view('admin/index');
+            $this->load->view('template/V_template_admin_footer');
             
         }
         public function tambah()

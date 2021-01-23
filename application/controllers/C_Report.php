@@ -11,15 +11,10 @@
         }
         public function index()
         {
-          
-    
-
+ 
             // template
             $this->load->view('template/V_template_header'); // header
             $this->load->view('user/V_lapor'); // main content
-            $this->load->view('template/V_template_footer'); // footer
-
-
             
         }
         public function test()

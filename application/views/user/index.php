@@ -10,24 +10,24 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<?= base_url();?>assets/img/favicon.png" rel="icon">
+  <link href="<?= base_url();?>assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
    <!-- Fontawesome CSS -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="<?= base_url();?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?= base_url();?>assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="<?= base_url();?>assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="<?= base_url();?>assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="<?= base_url();?>assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="<?= base_url();?>assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="<?= base_url();?>assets/vendor/aos/aos.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="<?= base_url();?>assets/css/style.css" rel="stylesheet">
 
   
 </head>
@@ -41,7 +41,6 @@
       <div class="logo mr-auto">
         <h1 class="text-dark"><span> BAKESBANGPOL </span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
@@ -71,7 +70,7 @@
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
-          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+          <img src="<?= base_url();?>assets/img/hero-img.png" class="img-fluid animated" alt="">
         </div>
       </div>
     </div>
@@ -87,11 +86,11 @@
         <div class="row" >
 
           <div class="col-lg-2 col-md-4 col-6"style="margin-left:35%;">
-            <img src="assets/img/clients/logobakesbangpol.jpg" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="200">
+            <img src="<?= base_url();?>assets/img/clients/logobakesbangpol.jpg" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="200">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6">
-            <img src="assets/img/clients/pemkotmalang.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="300">
+            <img src="<?= base_url();?>assets/img/clients/pemkotmalang.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="300">
           </div>
         </div>
 
@@ -123,7 +122,7 @@
             Mempunyai tugas melaksanakan pengelolaan program dan kegiatan di bidang kewaspadaan dini, kerjasama intelijen, pemantauan orang asing, tenaga kerja asing dan lembaga asing,fasilitasi kelembagaan bidang kewaspadaan penanganan konflik serta fasilitasi forum koordinasi pimpinan daerah.
             </p>
             </center>
-            <a href="https://malangkota.go.id/tag/bakesbangpol-kota-malang/" class="btn-learn-more">Learn More <i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
+            <a href="<?= base_url();?>https://malangkota.go.id/tag/bakesbangpol-kota-malang/" class="btn-learn-more">Learn More <i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
           </div>
         </div>
 
@@ -146,10 +145,10 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/apel gabungan.jpeg" class="img-fluid" alt="">
+              <img src="<?= base_url();?>assets/img/portfolio/apel gabungan.jpeg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/apel gabungan.jpeg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
+                  <a href="<?= base_url();?>assets/img/portfolio/apel gabungan.jpeg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
                 </div>
               </div>
             </div>
@@ -157,10 +156,10 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/foto bareng.jpeg" class="img-fluid" alt="">
+              <img src="<?= base_url();?>assets/img/portfolio/foto bareng.jpeg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/foto bareng.jpeg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
+                  <a href="<?= base_url();?>assets/img/portfolio/foto bareng.jpeg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
                 </div>
               </div>
             </div>
@@ -168,10 +167,10 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/polisi.jpeg" class="img-fluid" alt="">
+              <img src="<?= base_url();?>assets/img/portfolio/polisi.jpeg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/polisi.jpeg" data-gall="portfolioGallery" class="venobox" title="App 2"><i class="bx bx-plus"></i></a>
+                  <a href="<?= base_url();?>assets/img/portfolio/polisi.jpeg" data-gall="portfolioGallery" class="venobox" title="App 2"><i class="bx bx-plus"></i></a>
                 </div>
               </div>
             </div>
@@ -179,10 +178,10 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="assets/img/clients/majapahit.jpeg" class="img-fluid" alt="">
+              <img src="<?= base_url();?>assets/img/clients/majapahit.jpeg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <div class="portfolio-links">
-                  <a href="assets/img/clients/majapahit.jpeg" data-gall="portfolioGallery" class="venobox" title="Card 2"><i class="bx bx-plus"></i></a>
+                  <a href="<?= base_url();?>assets/img/clients/majapahit.jpeg" data-gall="portfolioGallery" class="venobox" title="Card 2"><i class="bx bx-plus"></i></a>
                 </div>
               </div>
             </div>
@@ -190,10 +189,10 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/clients/trunojoyo.jpeg" class="img-fluid" alt="">
+              <img src="<?= base_url();?>assets/img/clients/trunojoyo.jpeg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <div class="portfolio-links">
-                  <a href="assets/img/clients/trunojoyo.jpeg" data-gall="portfolioGallery" class="venobox" title="Web 2"><i class="bx bx-plus"></i></a>
+                  <a href="<?= base_url();?>assets/img/clients/trunojoyo.jpeg" data-gall="portfolioGallery" class="venobox" title="Web 2"><i class="bx bx-plus"></i></a>
                 </div>
               </div>
             </div>
@@ -201,10 +200,10 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img/clients/piagam.jpeg" class="img-fluid" alt="">
+              <img src="<?= base_url();?>assets/img/clients/piagam.jpeg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <div class="portfolio-links">
-                  <a href="assets/img/clients/piagam.jpeg" data-gall="portfolioGallery" class="venobox" title="App 3"><i class="bx bx-plus"></i></a>
+                  <a href="<?= base_url();?>assets/img/clients/piagam.jpeg" data-gall="portfolioGallery" class="venobox" title="App 3"><i class="bx bx-plus"></i></a>
                 </div>
               </div>
             </div>
@@ -248,7 +247,7 @@
 
               <div>
                 <i class="ri-mail-send-line"></i>
-                <p>info@example.com</p>
+                <p>bakesbangpol@malangkota.go.id</p>
               </div>
 
               <div> 
@@ -292,19 +291,19 @@
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="assets/vendor/counterup/counterup.min.js"></script>
-  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/venobox/venobox.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="<?= base_url();?>assets/vendor/jquery/jquery.min.js"></script>
+  <script src="<?= base_url();?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url();?>assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="<?= base_url();?>assets/vendor/php-email-form/validate.js"></script>
+  <script src="<?= base_url();?>assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="<?= base_url();?>assets/vendor/counterup/counterup.min.js"></script>
+  <script src="<?= base_url();?>assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="<?= base_url();?>assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="<?= base_url();?>assets/vendor/venobox/venobox.min.js"></script>
+  <script src="<?= base_url();?>assets/vendor/aos/aos.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="<?= base_url();?>assets/js/main.js"></script>
 
 </body>
 

@@ -6,13 +6,13 @@
         public function __construct()
         {
             parent::__construct();
-            $this->load->model('M_Data');
             $this->load->library('form_validation');
         } 
         public function index()
         {
-          
-            $this->load->view('/admin/tables.php');
+            $this->load->view('template/V_template_admin_header');
+            $this->load->view('admin/tables');
+            $this->load->view('template/V_template_admin_footer');
             
         }
 

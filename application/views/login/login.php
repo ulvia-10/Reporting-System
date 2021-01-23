@@ -10,14 +10,14 @@
     <title>Login | Page </title>
 
     <!-- Custom fonts for this template-->
-    <link href="assets/vendor/vendor-admin/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url() ?>assets/vendor/vendor-admin/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        href="<?php echo base_url() ?>https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
      <!-- Fontawesome CSS -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <!-- Custom styles for this template-->
-    <link href="assets/vendor/vendor-admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/vendor/vendor-admin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -34,7 +34,7 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 "><img src="assets/img/clients/bakesbangpol.png" alt=""></div>
+                            <div class="col-lg-6 "><img src="<?php echo base_url() ?>assets/img/clients/bakesbangpol.png" alt=""></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -57,7 +57,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.php" class="btn btn-primary btn-user btn-block">
+                                        <a href="<?php echo base_url() ?>C_lapor_User/index/" class="btn btn-primary btn-user btn-block">
                                             Login <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                                         </a>
                                         <hr>
@@ -65,10 +65,10 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.php">Forgot Password?</a>
+                                        <a class="small" href="<?php echo base_url()?>C_Login/forgotpassword">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.php">Create an Account!</a>
+                                        <a class="small" href="<?php echo base_url()?>C_Login/register">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>
@@ -83,14 +83,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="assets/vendor/vendor-admin/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/vendor-admin/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/vendor/vendor-admin/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/vendor/vendor-admin/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="assets/vendor/vendor-admin/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/vendor/vendor-admin/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="assets/vendor/vendor-admin/js/sb-admin-2.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/vendor/vendor-admin/js/sb-admin-2.min.js"></script>
 
 </body>
 
