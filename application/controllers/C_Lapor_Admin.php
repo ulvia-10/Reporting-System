@@ -6,7 +6,7 @@
         public function __construct()
         {
             parent::__construct();
-            $this->load->model('M_Lapor_Admin');
+            $this->load->model('M_Data');
             $this->load->library('form_validation');
         } 
         public function index()

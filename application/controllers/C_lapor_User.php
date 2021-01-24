@@ -6,7 +6,7 @@
         public function __construct()
         {
             parent::__construct();
-            $this->load->model('M_lapor_User');
+            $this->load->model('M_Data');
             $this->load->library('form_validation');
         }
         public function index()
@@ -39,7 +39,7 @@
             else{
                 $upload = $this->M_lapor->upload();
                 if($upload ['result'] == 'success'){
-                    $this->Siswa_model->tambahdatalapor($upload);
+                    $this->M_Data->tambahdatalapor($upload);
                     $this->session->set_flashdata('flash-data','ditambahkan');
                     redirect('lapor','refresh');
                 }else{
