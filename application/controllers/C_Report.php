@@ -17,11 +17,75 @@
             $this->load->view('user/V_lapor'); // main content
             
         }
-        public function test()
+        public function tambah()
         {
-          
-           echo"Hello!";
-            
+
+            $data ['title']='Tambah Data Lapor';
+
+            $this->load->helper(array('form','url'));
+            $this->load->library('form_validation');
+    
+            $this->form_validation->set_rules('id_lapor','Id_lapor','required');
+            $this->form_validation->set_rules('nama_lapor','Nama','required');
+            $this->form_validation->set_rules('kecamatan','kecamatan','required');
+			$this->form_validation->set_rules('alamat','alamat','required');
+			$this->form_validation->set_rules('tgl_tragedi','tgl_tragedi','required');
+			$this->form_validation->set_rules('judul','judul','required');
+			$this->form_validation->set_rules('keterangan','keterangan','required');
+            $this->form_validation->set_rules('jurusan','jurusan','required');
+            $this->form_validation->set_rules('foto_tragedi','foto_tragedi','required');
+
+            if ($this->form_validation->run()==FALSE){
+                $this->load->view('/user/index.php');
+            }
+            else{
+                $upload = $this->M_lapor->upload();
+                if($upload ['result'] == 'success'){
+                    $this->M_Data->tambahdatalapor($upload);
+                    $this->session->set_flashdata('flash-data','ditambahkan');
+                    redirect('lapor','refresh');
+                }else{
+                    echo $upload['error'];
+                }
+            }
         }
+        public function detail($id)
+        {
+            $data['title']='Detail Kondisi Wilayah ';
+            $data['lapor']= $this->M_lapor_Admin->getabsensiByID($id);
+            $this->load->view("admin/lapor/detailabsensi",$data);
+        }
+        public function edit($id){
+            $data ['title']='Form Edit Data Kondisi Wilayah ';
+            $this->form_validation->set_rules('id_lapor','Id_lapor','required');
+            $this->form_validation->set_rules('nama_lapor','Nama','required');
+            $this->form_validation->set_rules('kecamatan','kecamatan','required');
+			$this->form_validation->set_rules('alamat','alamat','required');
+			$this->form_validation->set_rules('tgl_tragedi','tgl_tragedi','required');
+			$this->form_validation->set_rules('judul','judul','required');
+			$this->form_validation->set_rules('keterangan','keterangan','required');
+            $this->form_validation->set_rules('jurusan','jurusan','required');
+            $this->form_validation->set_rules('foto_tragedi','foto_tragedi','required');
+
+            if ($this->form_validation->run() == FALSE){
+            #code...    
+            $data['lapor']= $this->M_lapor_Admin->getabsensiByID($id);        
+                $this->load->view("admin/absensi/editabsensi", $data);
+            }
+            else{
+            #code...
+                $this->M_lapor_Admin->ubahdataabsensi();
+                $this->session->set_flashdata('flash-data','diedit');
+                redirect('lapor','refresh');
+            }
+        }   
+
+        public function hapus($id){
+            $this->M_lapor_Admin->hapusdatakpw($id);
+            $this->session->set_flashdata('flash-data','dihapus');
+            redirect('lapor','refresh');
+        }
+
+      
     }
         ?>

@@ -18,21 +18,36 @@
         }
         public function tambah()
         {
-            $data['title']='Form Menambahkan Data Kondisi Wilayah ';
-        
-            $this->form_validation->set_rules('tgl_absen','tgl_absen','required');
-            $this->form_validation->set_rules('hadir','hadir');
-            $this->form_validation->set_rules('sakit','sakit');
-            $this->form_validation->set_rules('izin','izin');
+            $data ['title']='Tambah Data Lapor';
+
+            $this->load->helper(array('form','url'));
+            $this->load->library('form_validation');
+    
+            $this->form_validation->set_rules('id_lapor','Id_lapor','required');
+            $this->form_validation->set_rules('nama_lapor','Nama','required');
+            $this->form_validation->set_rules('kecamatan','kecamatan','required');
+			$this->form_validation->set_rules('alamat','alamat','required');
+			$this->form_validation->set_rules('tgl_tragedi','tgl_tragedi','required');
+			$this->form_validation->set_rules('judul','judul','required');
+			$this->form_validation->set_rules('keterangan','keterangan','required');
+            $this->form_validation->set_rules('jurusan','jurusan','required');
+            $this->form_validation->set_rules('foto_tragedi','foto_tragedi','required');
+
             if ($this->form_validation->run()==FALSE){
-                $this->load->view("admin/absensi/tambahabsensi", $data);
+                $this->load->view('/user/index.php');
             }
             else{
-                $this->M_lapor_Admin->tambahdataabsensi();
-                redirect('lapor','refresh');
-            
+                $upload = $this->M_lapor->upload();
+                if($upload ['result'] == 'success'){
+                    $this->M_Data->tambahdatalapor($upload);
+                    $this->session->set_flashdata('flash-data','ditambahkan');
+                    redirect('lapor','refresh');
+                }else{
+                    echo $upload['error'];
+                }
             }
         }
+    
 
         public function detail($id)
         {

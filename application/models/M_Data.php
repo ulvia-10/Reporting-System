@@ -7,29 +7,36 @@
           }
           public function getlaporByID($id)
         {
-            return $this->db->get_where('lapor',array('id_lapor'=>$id));
+            // return $this->db->get_where('lapor',array('id_lapor'=>$id))->row_array();
+         
+            $sql="SELECT a.id_lapor,b.id_kategori,b.nama_kategori, a.nama_lapor,a.kecamatan,a.alamat, a.foto_tragedi, a.tgl_tragedi, a.keterangan
+            FROM lapor a, kategori b 
+            where a.id_kategori = b.id_kategori AND a.id_lapor = '$id'";
+            
+            return $this->db->query($sql)->row_array();
+         
         }
+        
         public function getlaporkategori()
         {
-            $sql="SELECT a.id_lapor,b.id_kategori,b.nama_kategori, a.nama_lapor,a.kecamatan,a.alamat
+            $sql="SELECT a.id_lapor,b.id_kategori,b.nama_kategori, a.nama_lapor,a.kecamatan,a.alamat,a.status_lapor,a.tgl_tragedi
             FROM lapor a, kategori b 
             where a.id_kategori = b.id_kategori";
             return $this->db->query($sql);
         }
-        
+        public function getalluser(){
+            return $this->db->get('user');
+         }
+    
          public function tambahdatalpr($upload){
             $data=array(
-                "nama"=>$this->input->post('nama',true),
+                "nama_lapor"=>$this->input->post('nama_lapor',true),
+                "kecamatan"=>$this->input->post('kecamatan',true),
                 "alamat"=>$this->input->post('alamat',true),
-                "umur"=>$this->input->post('umur',true),
-                "agama"=>$this->input->post('agama',true),
-                "gender"=>$this->input->post('gender',true),
-                "nama_ortu"=>$this->input->post('nama_ortu',true),
-                "jurusan"=>$this->input->post('jurusan',true),
-                "kelas"=>$this->input->post('kelas',true),
-                "no_hp"=>$this->input->post('no_hp',true),
-                "tgl_lahir"=>$this->input->post('tgl_lahir',true)
-
+                "tgl_tragedi"=>$this->input->post('tgl_tragedi',true),
+                "judul"=>$this->input->post('judul',true),
+                "keterangan"=>$this->input->post('keterangan',true),
+                "foto"=>$this->input->post('foto',true)
             );
             $this->db->insert('siswa', $data);
         }
@@ -54,26 +61,23 @@
         }
         public function ubahdata(){
             $data = [
-                "nama"=>$this->input->post('nama',true),
+                "nama_lapor"=>$this->input->post('nama_lapor',true),
+                "nama_kategori"=>$this->input->post('nama_kategori',true),
+                "kecamatan"=>$this->input->post('kecamatan',true),
                 "alamat"=>$this->input->post('alamat',true),
-                "umur"=>$this->input->post('umur',true),
-                "agama"=>$this->input->post('agama',true),
-                "gender"=>$this->input->post('gender',true),
-                "nama_ortu"=>$this->input->post('nama_ortu',true),
-                "jurusan"=>$this->input->post('jurusan',true),
-                "kelas"=>$this->input->post('kelas',true),
-                "no_hp"=>$this->input->post('no_hp',true),
-                "tgl_lahir"=>$this->input->post('tgl_lahir',true)
+                "tgl_tragedi"=>$this->input->post('tgl_tragedi',true),
+                "judul"=>$this->input->post('judul',true),
+                "keterangan"=>$this->input->post('keterangan',true),
+                "foto"=>$this->input->post('foto',true)
                 ];
             $this->db->where('id_lapor', $this->input->post('id_lapor'));
             $this->db->update('lapor', $data);
         }    
-        public function hapusdata($id){
+        public function hapusdatalpr($id){
             $this->db->where('id_lapor',$id);
             $this->db->delete('lapor');
             redirect('C_Data/index','refresh');
         }
-
         public function datatabels(){
             $query = $this->db->order_by('id_lapor', 'ASC')->get('lapor');
             return $query->result(); 

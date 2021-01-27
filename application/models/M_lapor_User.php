@@ -2,18 +2,18 @@
     defined('BASEPATH') OR exit('No direct script access allowed');
     
     class M_lapor_User extends CI_Model {
-
    
         public function count_all(){
-            return $this->db->count_all('lapor'); // Untuk menghitung semua data lapor
+            return $this->db->count_all('user'); // Untuk menghitung semua data lapor
           }
+        
         public function tambahdatalapor($upload){
             $data=array(
-            "id_lapor"=>$this->input->post('id_lapor',true),
-            "nama_lapor"=>$this->input->post('nama_lapor',true),
-            "kecamatan"=>$this->input->post('kecamatan',true),
-            "alamat"=>$this->input->post('alamat',true),
-            "tgl_tragedi"=>$this->input->post('tgl_tragedi',true),
+            "id_user"=>$this->input->post('id_user',true),
+            "nama_lengkap"=>$this->input->post('nama_lengkap',true),
+            "jenis_kelamin"=>$this->input->post('jenis_kelamin',true),
+            "email"=>$this->input->post('email',true),
+            "no_telp"=>$this->input->post('no_telp',true),
             "judul"=>$this->input->post('judul',true),
             "keterangan"=>$this->input->post('keterangan',true),
             "jurusan"=>$this->input->post('jurusan',true),

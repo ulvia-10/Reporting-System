@@ -34,22 +34,23 @@
 					<i class="fa fa-clipboard" aria-hidden="true"></i>
 					<span>Data Kondisi Wilayah</span></a>
 			</li>
-	
 
-			<!-- Nav Item - Utilities Collapse Menu -->
+
+
+			<!-- Nav Item - Tables -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-					aria-expanded="true" aria-controls="collapseUtilities">
-					<i class="fa fa-list-alt" aria-hidden="true"></i>
-					<span>Data User</span>
-				</a>
-
+				<a class="nav-link" href="<?= base_url();?>C_Data/indexuser/ ">
+				
+					<span> 	<i class="fa fa-clipboard" aria-hidden="true"></i></span>Data User</a>
 			</li>
 
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
-
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url();?>C_Login/index ">
+					<span> <i class="fa fa-power-off" aria-hidden="true"></i> Log Out</span></a>
+			</li>
 			<!-- Sidebar Toggler (Sidebar) -->
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -73,19 +74,7 @@
 						</button>
 					</form>
 
-					<!-- Topbar Search -->
-					<form
-						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-								aria-label="Search" aria-describedby="basic-addon2">
-							<div class="input-group-append">
-								<button class="btn btn-primary" type="button">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
-							</div>
-						</div>
-					</form>
+
 
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
@@ -172,8 +161,9 @@
 						<li class="nav-item dropdown no-arrow">
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-								<img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small"><i
+										class="fa fa-user-circle large" aria-hidden="true"></i> Profile</span>
+								<!-- <img class="img-profile rounded-circle" src="img/undraw_profile.svg"> -->
 							</a>
 							<!-- Dropdown - User Information -->
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -203,7 +193,8 @@
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Data Pelaporan Kondisi Wilayah</h6>
+							<h6 class="m-0 font-weight-bold text-primary">Data User <i class="fa fa-user-circle"
+									aria-hidden="true"></i> </h6>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -212,39 +203,20 @@
 										<tr>
 											<th>No</th>
 											<th>Nama</th>
-											<th>Kategori</th>
-											<th>Kecamatan</th>
-											<th>Alamat</th>
-											<th>Action</th>
+											<th>Email</th>
+											<th>No Telepon</th>
+											<th>Jenis Kelamin</th>
 										</tr>
 									</thead>
 									<tbody style=" text-align:center;">
 										<?php $no=1;
-                                         foreach ($lapor->result_array() as $lpr){?>
+                                         foreach ($user->result_array() as $usr){?>
 										<tr>
 											<td> <?= $no++; ?></td>
-											<td><?= $lpr["nama_lapor"];?></td>
-											<td><?= $lpr["nama_kategori"];?></td>
-											<td><?= $lpr["kecamatan"]?></td>
-											<td><?= $lpr["alamat"];?></td>
-											<td>
-												<!-- detail -->
-												<a href="<?base_url();?>$lpr['id_lapor'];?>"
-													class="badge badge-primary"> <i class="fa fa-eye"
-														aria-hidden="true"></i> Detail</a></a>
-												<!-- <end detail -->
-
-												<a href="<?= base_url();?>C_Data/edit/<?= $lpr['id_lapor'];?>"
-													class="badge badge-success "><i class="fa fa-edit "></i>Edit</a>
-												<!-- cetak -->
-
-												<a href="<?= base_url();?>C_Data/CetakData/<?=$lpr['id_lapor'];?>"
-													class="badge badge-primary "> <i class="fa fa-print"
-														aria-hidden="true"></i>Print</a>
-												<!-- hapus -->
-												<a href="<?= base_url();?>C_Data/CetakData/<?=$lpr['id_lapor'];?>"
-														class="badge badge-danger "> <i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
-											</td>
+											<td><?= $usr["nama_lengkap"];?></td>
+											<td><?= $usr["email"];?></td>
+											<td><?= $usr["no_telp"]?></td>
+											<td><?= $usr["jenis_kelamin"];?></td>
 											</td>
 											<?php 
                                         }

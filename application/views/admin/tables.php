@@ -34,22 +34,23 @@
 					<i class="fa fa-clipboard" aria-hidden="true"></i>
 					<span>Data Kondisi Wilayah</span></a>
 			</li>
-	
 
-			<!-- Nav Item - Utilities Collapse Menu -->
+
+			<!-- Nav Item - Tables -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-					aria-expanded="true" aria-controls="collapseUtilities">
-					<i class="fa fa-list-alt" aria-hidden="true"></i>
-					<span>Data User</span>
-				</a>
-
+				<a class="nav-link" href="<?= base_url();?>C_Data/indexuser/ ">
+					<i class="fa fa-clipboard" aria-hidden="true"></i>
+					<span>Data User</span></a>
 			</li>
-
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url();?>C_Login/index ">
+					<i class="fa fa-power-off" aria-hidden="true"></i>
+					<span> Log Out</span></a>
 
+			</li>
 			<!-- Sidebar Toggler (Sidebar) -->
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -71,20 +72,6 @@
 						<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
 							<i class="fa fa-bars"></i>
 						</button>
-					</form>
-
-					<!-- Topbar Search -->
-					<form
-						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-								aria-label="Search" aria-describedby="basic-addon2">
-							<div class="input-group-append">
-								<button class="btn btn-primary" type="button">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
-							</div>
-						</div>
 					</form>
 
 					<!-- Topbar Navbar -->
@@ -199,61 +186,73 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
-
-					<!-- DataTales Example -->
+					<!-- Collapsable Card Example -->
 					<div class="card shadow mb-4">
-						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Data Pelaporan Kondisi Wilayah</h6>
-						</div>
-						<div class="card-body">
-							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-									<thead style=" text-align: center;">
-										<tr>
-											<th>No</th>
-											<th>Nama</th>
-											<th>Kategori</th>
-											<th>Kecamatan</th>
-											<th>Alamat</th>
-											<th>Action</th>
-										</tr>
-									</thead>
-									<tbody style=" text-align:center;">
-										<?php $no=1;
+						<!-- Card Header - Accordion -->
+						<a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+							role="button" aria-expanded="true" aria-controls="collapseCardExample">
+							<h6 class="m-0 font-weight-bold text-primary"> <i class="fas fa-clipboard-list    "></i>
+								Data Pelaporan Kondisi Wilayah</h6>
+						</a>
+
+						<!-- Card Content - Collapse -->
+						<div class="collapse show" id="collapseCardExample">
+							<div class="card-body">
+								<div class="table-responsive">
+									<a href="<?= base_url();?>C_Data/tambah/"
+										class="btn btn-primary btn-sm mb-3">
+										<i class="fa fa-plus" aria-hidden="true"></i> Tambah Data</a>
+									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+										<thead style=" text-align: center;">
+											<tr>
+												<th>No</th>
+												<th>Nama</th>
+												<th>Tanggal</th>
+												<th>Kategori</th>
+												<th>Kecamatan</th>
+												<th>Status Lapor</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody style=" text-align:center;">
+											<?php $no=1;
                                          foreach ($lapor->result_array() as $lpr){?>
-										<tr>
-											<td> <?= $no++; ?></td>
-											<td><?= $lpr["nama_lapor"];?></td>
-											<td><?= $lpr["nama_kategori"];?></td>
-											<td><?= $lpr["kecamatan"]?></td>
-											<td><?= $lpr["alamat"];?></td>
-											<td>
-												<!-- detail -->
-												<a href="<?base_url();?>$lpr['id_lapor'];?>"
-													class="badge badge-primary"> <i class="fa fa-eye"
-														aria-hidden="true"></i> Detail</a></a>
-												<!-- <end detail -->
+											<tr>
+												<td> <?= $no++; ?></td>
+												<td><?= $lpr["nama_lapor"];?></td>
+												<td><?= $lpr["tgl_tragedi"];?></td>
+												<td><?= $lpr["nama_kategori"];?></td>
+												<td><?= $lpr["kecamatan"]?></td>
+												<td><a class="badge badge-success"><?= $lpr["status_lapor"]; ?>	</a></td>
+												<td>
+													<!-- detail -->
+													<a href="<?= base_url();?>C_Data/detail/<?= $lpr['id_lapor'];?>"
+														class="badge badge-primary"> <i class="fa fa-eye"
+															aria-hidden="true"></i></a></a>
 
-												<a href="<?= base_url();?>C_Data/edit/<?= $lpr['id_lapor'];?>"
-													class="badge badge-success "><i class="fa fa-edit "></i>Edit</a>
-												<!-- cetak -->
+													<a href="<?= base_url();?>C_Data/edit/<?= $lpr['id_lapor'];?>"
+														class="badge badge-success"><i class="fa fa-edit "></i> </a>
+													<!-- cetak -->
 
-												<a href="<?= base_url();?>C_Data/CetakData/<?=$lpr['id_lapor'];?>"
-													class="badge badge-primary "> <i class="fa fa-print"
-														aria-hidden="true"></i>Print</a>
-												<!-- hapus -->
-												<a href="<?= base_url();?>C_Data/CetakData/<?=$lpr['id_lapor'];?>"
-														class="badge badge-danger "> <i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
-											</td>
-											</td>
-											<?php 
+													<a href="<?= base_url();?>C_Data/CetakData/<?=$lpr['id_lapor'];?>"
+														class="badge badge-secondary "> <i class="fa fa-print"
+															aria-hidden="true"></i></a>
+													<!-- hapus -->
+													<a href="<?= base_url();?>C_Data/hapus/<?=$lpr['id_lapor'];?>"
+														class="badge badge-danger "> <i class="fa fa-trash"
+															aria-hidden="true"></i></a>
+												</td>
+												</td>
+												<?php 
                                         }
                                          ?>
-									</tbody>
-								</table>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
+
 
 				</div>
 				<!-- /.container-fluid -->

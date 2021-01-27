@@ -18,8 +18,21 @@
                 $data['lapor']=$this->M_Data->cariData();
             }
             $this->load->view('template/V_template_admin_header',$data);
-            $this->load->view('template/V_header_datatabels');
+            // $this->load->view('template/V_header_datatabels');
             $this->load->view('admin/tables',$data);
+            // $this->load->view('template/V_footer_datatabels');
+            $this->load->view('template/V_template_admin_footer',$data);
+        }
+        public function indexuser()
+        {
+            $data['user'] = $this->M_Data->getalluser();
+            if($this->input->post('keyword')){
+                #code...
+                $data['user']=$this->M_Data->cariData();
+            }
+            $this->load->view('template/V_template_admin_header',$data);
+            $this->load->view('template/V_header_datatabels');
+            $this->load->view('admin/tables_user',$data);
             $this->load->view('template/V_footer_datatabels');
             $this->load->view('template/V_template_admin_footer',$data);
         }
@@ -32,15 +45,19 @@
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('id_lapor','id_lapor','required');
-            $this->form_validation->set_rules('nama_lapor','nama','required');
+            $this->form_validation->set_rules('nama_lapor','nama_lapor','required');
+            $this->form_validation->set_rules('kategori','kategori','required');
             $this->form_validation->set_rules('judul','judul','required');
             $this->form_validation->set_rules('tgl_tragedi','tgl_tragedi','required');
 			$this->form_validation->set_rules('kecamatan','kecamatan','required');
             $this->form_validation->set_rules('alamat','alamat','required');
             $this->form_validation->set_rules('keterangan','keterangan','required');
+            $this->form_validation->set_rules('foto','foto','required');
 
             if ($this->form_validation->run()==FALSE){
-                $this->load->view("admin/tables");
+                $this->load->view('template/V_template_admin_header',$data);
+                $this->load->view("admin/tambahkondisi");
+                $this->load->view('template/V_template_admin_footer',$data);
             }
             else{
                 $upload = $this->M_Data->upload();
@@ -58,7 +75,9 @@
         {
             $data['title']='Detail Data Kondisi Wilayah';
             $data['lapor']= $this->M_Data->getlaporByID($id);
-            $this->load->view("admin/siswa/detailsiswa",$data);
+            $this->load->view('template/V_template_admin_header',$data);
+            $this->load->view("admin/detailkondisi",$data);
+            $this->load->view('template/V_template_admin_footer',$data);
         }
 
         
@@ -74,29 +93,31 @@
 
             if ($this->form_validation->run() == FALSE){
             #code...    
-            $data['siswa']= $this->M_Data->getlaporByID($id);        
-                $this->load->view("admin/siswa/editsiswa", $data);
+            $data['lapor']= $this->M_Data->getlaporByID($id);        
+            $this->load->view('template/V_template_admin_header',$data);
+            $this->load->view("admin/editkondisi", $data);
+            $this->load->view('template/V_template_admin_footer',$data);
             }
             else{
             #code...
-                $this->M_Data->ubahdatapegawai();
+                $this->M_Data->ubahdata();
                 $this->session->set_flashdata('flash-data','diedit');
-                redirect('Siswa','refresh');
+                redirect('C_Data/index','refresh');
             }
         }   
 
         public function hapus($id){
             $this->M_Data->hapusdatalpr($id);
             $this->session->set_flashdata('flash-data','dihapus');
-            redirect('Siswa','refresh');
+            redirect('C_Data/index','refresh');
         }
-    public function cetakLaporan(){
+    public function cetakData(){
         
-        $this->load->library('pdf_siswa');
+        $this->load->library('pdf_laporan');
         $data['lapor'] = $this->Cetak_model_data->view();
         $this->pdf_siswa->setPaper('A4', 'portrait');
-        $this->pdf_siswa->filename = "laporansiswa.pdf";
-        $this->pdf_siswa->load_view('admin/siswa/laporansiswa',$data);
+        $this->pdf_siswa->filename = "laporankondisiwilayah.pdf";
+        $this->pdf_siswa->load_view('admin/laporankondisi',$data);
     }
 
     }

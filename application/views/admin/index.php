@@ -36,20 +36,20 @@
 					<i class="fa fa-clipboard" aria-hidden="true"></i>
 					<span>Data Kondisi Wilayah</span></a>
 			</li>
+			<!-- Nav Item - Tables -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-					aria-expanded="true" aria-controls="collapseTwo">
-					<i class="fa fa-print" aria-hidden="true"></i>
-					<span>Data User</span>
-				</a>
-
+				<a class="nav-link" href="<?= base_url();?>C_Data/indexuser/ ">
+					<i class="fa fa-clipboard" aria-hidden="true"></i>
+					<span>Data User</span></a>
 			</li>
-
-
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
-
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url();?>C_Login/index ">
+					<i class="fa fa-power-off" aria-hidden="true"></i>
+					<span> Log Out</span></a>
+			</li>
 			<!-- Sidebar Toggler (Sidebar) -->
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -225,8 +225,9 @@
 						<li class="nav-item dropdown no-arrow">
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-								<img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small"> <i class="fa fa-user-circle"
+										aria-hidden="true"></i> Profile</span>
+								<!-- <img class="img-profile rounded-circle" src="img/undraw_profile.svg"> -->
 							</a>
 							<!-- Dropdown - User Information -->
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -489,6 +490,18 @@
 		</div>
 	</div>
 
+	<script lang="text/javascript">
+		var span = document.getElementByid('span');
 
+		function time() {
+			var d = new Date();
+			var s = d.getSecond();
+			var m = d.getMinutes();
+			var h = getHours();
+			span.textContent = h + ":" + m + ":" + s;
 
+		}
+		setInterval(time, 1000);
+
+	</script>
 </body>
