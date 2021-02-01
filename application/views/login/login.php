@@ -57,7 +57,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="<?php echo base_url() ?>C_lapor_User/index/" class="btn btn-primary btn-user btn-block">
+                                        <a href="<?php echo base_url() ?>C_Lapor_Admin/index/" class="btn btn-primary btn-user btn-block">
                                             Login <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                                         </a>
                                         <hr>

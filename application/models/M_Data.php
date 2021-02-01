@@ -3,7 +3,7 @@
     
     class M_Data extends CI_Model {
         public function count_all(){
-            return $this->db->count_all('lapor'); // Untuk menghitung semua data siswa
+            return $this->db->count_all('lapor'); // Untuk menghitung semua data lapor
           }
           public function getlaporByID($id)
         {
@@ -15,6 +15,16 @@
             
             return $this->db->query($sql)->row_array();
          
+        }
+        public function get_chart_user()
+        {
+            $query = $this->db->get('user');
+            return $query->num_rows();
+        }
+        public function get_chart_lapor()
+        {
+            $query = $this->db->get('lapor');
+            return $query->num_rows();
         }
         
         public function getlaporkategori()
@@ -31,20 +41,21 @@
          public function tambahdatalpr($upload){
             $data=array(
                 "nama_lapor"=>$this->input->post('nama_lapor',true),
-                "kecamatan"=>$this->input->post('kecamatan',true),
-                "alamat"=>$this->input->post('alamat',true),
+                "judul"=>$this->input->post('judul',true),
+                "nama_kategori"=>$this->input->post('nama_kategori',true),
                 "tgl_tragedi"=>$this->input->post('tgl_tragedi',true),
+                "kecamatan"=>$this->input->post('kecamatan',true),
                 "judul"=>$this->input->post('judul',true),
                 "keterangan"=>$this->input->post('keterangan',true),
-                "foto"=>$this->input->post('foto',true)
+                // "foto_tragedi"=>$this->input->post('foto_tragedi',true)
             );
-            $this->db->insert('siswa', $data);
+            $this->db->insert('lapor', $data);
         }
         public function upload(){    
-            $config['upload_path'] = './images/';    
+            $config['upload_path'] = '. /images/';    
             $config['allowed_types'] = 'jpg|png|jpeg';
             $this->load->library('upload', $config);
-            if($this->upload->do_upload('foto')){
+            if($this->upload->do_upload('foto_tragedi')){
                 $return = array('result' => 'success', 'file' => $this->upload->data(), 'error' => '');      
                 return $return;
             }else{    

@@ -78,6 +78,11 @@
 									<label for="nama_lapor">Nama</label>
 									<input type="text" class="form-control" id="nama_lapor" name="nama_lapor" required>
 								</div>
+								
+								<div class="form-group">
+									<label for="judul">Judul</label>
+									<input type="text" class="form-control" id="judul" name="judul" required>
+								</div>
 
 								<div class="form-group">
 									<label for="nama_kategori">Nama Kategori</label>
@@ -95,7 +100,7 @@
 
 								<div class="form-group">
 									<label for="tgl_tragedi">Tanggal Tragedi</label>
-									<input type="text" class="form-control" id="tgl_tragedi" name="tgl_tragedi">
+									<input type="date" class="form-control" id="tgl_tragedi" name="tgl_tragedi">
 								</div>
 
 								<div class="form-group">
@@ -121,8 +126,8 @@
 								</div>
 
 								<div class="form-group">
-									<label for="foto">Foto</label>
-									<input type="file" class="form-control" id="foto" name="foto" required>
+									<label for="foto_tragedi">Foto</label>
+									<input type="file" class="form-control" id="foto_tragedi" name="foto_tragedi">
 								</div>
 
 								<button type="submit" name="submit" class="btn btn-primary float-right"> <i

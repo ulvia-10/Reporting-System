@@ -80,7 +80,7 @@
 								</div>
 								<div class="form-group">
 									<label for="nama_kategori">Pilih Kategori </label>
-									<select name="nama_kategori" id="nama_kategori">
+									<select name="nama_kategori"  class="form-control" id="nama_kategori">
 										<option value="1">Ideologi</option>
 										<option value="2">Politik</option>
 										<option value="3">Ekonomi</option>
@@ -92,9 +92,14 @@
 									</select>
 								</div>
 								<div class="form-group">
-									<label for="kecamatan">Kecamatan</label>
-									<input type="text" class="form-control" id="kecamatan" name="kecamatan"
-										value="<?= $lapor ['kecamatan'] ;?>">
+									<label for="kecamatan">Pilih Kecamatan</label>
+									<select class="form-control" id="kecamatan" name="kecamatan">
+										<option>Lowokwaru</option>
+										<option>Kedungkandang</option>
+										<option>Blimbing</option>
+										<option>Klojen</option>
+										<option>Sukun</option>
+									</select>
 								</div>
 								<div class="form-group">
 									<label for="tgl_tragedi">Tanggal Tragedi</label>
@@ -113,7 +118,7 @@
 								</div>
 
 								<button type="submit" name="edit" class="btn btn-primary float-right"> <i
-										class="fas fa-edit    "></i> Edit</button>
+										class="fas fa-edit"></i> Edit</button>
 							</form>
 						</div>
 					</div>

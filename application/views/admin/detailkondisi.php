@@ -65,8 +65,8 @@
 			<div class="row mt-3">
 				<div class="col-md-6">
 					<div class="card">
-						<div class="card-header">
-							<i class="fa fa-user" aria-hidden="true"></i> Detail Data Kondisi Wilayah
+						<div class="card-header" style="text-align:center;">
+							<i class="fa fa-user" aria-hidden="true" style="color:blue"></i>  Detail Data Kondisi Wilayah
 						</div>
 						<div class="card-body">
 							<center>
@@ -74,12 +74,12 @@
 							</center>
 
 							<?php
-						$src = 'https://pertaniansehat.com/v01/wp-content/uploads/2015/08/default-placeholder.png';
+							$src = 'https://pertaniansehat.com/v01/wp-content/uploads/2015/08/default-placeholder.png';
 
-						if ( $lapor['foto_tragedi'] ) {
+							if ( $lapor['foto_tragedi'] ) {
 
-							$src = base_url('assets/images'). $lapor['foto_tragedi'];
-						}
+								$src = base_url('assets/images'). $lapor['foto_tragedi'];
+							}
 					
 					?>
 

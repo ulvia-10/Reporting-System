@@ -11,9 +11,14 @@
         } 
         public function index()
         {
-            $this->load->view('template/V_template_admin_header');
-            $this->load->view('admin/index');
-            $this->load->view('template/V_template_admin_footer');
+            $data = array (
+                'getUser' =>  $this->M_Data->get_chart_user(),
+                'getLapor' => $this->M_Data->get_chart_lapor()
+            );
+            
+            $this->load->view('template/V_template_admin_header',$data);
+            $this->load->view('admin/index',$data);
+            $this->load->view('template/V_template_admin_footer',$data);
             
         }
         public function tambah()
@@ -48,7 +53,6 @@
             }
         }
     
-
         public function detail($id)
         {
             $data['title']='Detail Kondisi Wilayah ';

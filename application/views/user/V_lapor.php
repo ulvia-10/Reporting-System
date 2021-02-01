@@ -7,6 +7,7 @@
 
 	<hr>
 
+	<?php echo $this->session->flashdata('msg') ?>
 	<div class="card">
 		<div class="card-body">
 			<?php if (validation_errors()):?>
@@ -17,25 +18,36 @@
 			<h5>Form Laporan</h5>
 
 
-			<form action="<?php echo site_url('C_report/tambah')?>" method="POST">
+			<form action="<?php echo site_url('C_report/tambah')?>" method="POST" enctype="multipart/form-data">
 
 				<div class="form-group">
 					<label for="nama_lapor">Nama </label>
 					<input type="text" class="form-control" name="nama_lapor" id="nama_lapor"
 						placeholder="Masukkan nama Anda">
 				</div>
+				<div class="form-group">
+					<label for="judul">Juduk </label>
+					<input type="text" class="form-control" name="judul" id="judul"
+						placeholder="Masukkan judul laporan">
+				</div>
 
 				<div class="form-group">
 					<label for="kategori">Pilih Kategori </label>
 					<select class="form-control" name="kategori" id="kategori">
-						<option>Ideologi</option>
-						<option>Politik</option>
-						<option>Ekonomi</option>
-						<option>Sosial</option>
-						<option>Budaya</option>
-						<option>Pertahanan</option>
-						<option>Keamanan </option>
-						<option>Covid 19</option>
+						
+						<?php if ( $dataCategory->num_rows() > 0 ) {
+							
+							foreach ( $dataCategory->result() AS $rowCategory ) {
+								
+								// metode menampilkan data antara result() vs result_array()
+								// result(); // $rowCategory->id_category	
+								// result_array(); // $rowCategory['id_category'];
+
+								echo '<option value="'.$rowCategory->id_kategori.'">'.ucfirst($rowCategory->nama_kategori).'</option>';
+							}
+						}
+						?>
+						
 					</select>
 				</div>
 
@@ -44,7 +56,7 @@
 
 						<div class="form-group">
 							<label for="tgl_tragedi">Date</label>
-							<input class="form-control" type="date" value="2011-08-19" name="tgl_tragedi"
+							<input class="form-control" type="date" value="<?php echo date('Y-m-d') ?>" name="tgl_tragedi"
 								id="tgl_tragedi">
 							<small>Pilih tanggal</small>
 						</div>
@@ -81,7 +93,7 @@
 
 				<div class="form-group">
 					<label for="foto">Foto</label>
-					<input type="file" class="form-control" id="foto" name="foto" required>
+					<input type="file" class="form-control" id="foto" name="foto_tragedi" required> 
 				</div>
 
 				<div class="form-group" style="margin-left:75%">
