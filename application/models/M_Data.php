@@ -9,7 +9,7 @@
         {
             // return $this->db->get_where('lapor',array('id_lapor'=>$id))->row_array();
          
-            $sql="SELECT a.id_lapor,b.id_kategori,b.nama_kategori, a.nama_lapor,a.kecamatan,a.alamat, a.foto_tragedi, a.tgl_tragedi, a.keterangan
+            $sql="SELECT a.id_lapor,b.id_kategori,b.nama_kategori, a.nama_lapor,a.kecamatan,a.alamat, a.foto_tragedi, a.tgl_tragedi, a.keterangan, a.judul
             FROM lapor a, kategori b 
             where a.id_kategori = b.id_kategori AND a.id_lapor = '$id'";
             
@@ -70,20 +70,24 @@
             $this->db->or_like('id_lapor',$keyword);
             return $this->db->get('lapor')->result_array();
         }
+
         public function ubahdata(){
+            
             $data = [
-                "nama_lapor"=>$this->input->post('nama_lapor',true),
-                "nama_kategori"=>$this->input->post('nama_kategori',true),
-                "kecamatan"=>$this->input->post('kecamatan',true),
-                "alamat"=>$this->input->post('alamat',true),
-                "tgl_tragedi"=>$this->input->post('tgl_tragedi',true),
-                "judul"=>$this->input->post('judul',true),
-                "keterangan"=>$this->input->post('keterangan',true),
-                "foto"=>$this->input->post('foto',true)
-                ];
+                "id_kategori"   =>$this->input->post('nama_kategori',true),
+                "nama_lapor"    =>$this->input->post('nama_lapor',true),
+                "kecamatan"     =>$this->input->post('kecamatan',true),
+                "alamat"        =>$this->input->post('alamat',true),
+                "tgl_tragedi"   =>$this->input->post('tgl_tragedi',true),
+                "judul"     =>$this->input->post('judul',true),
+                "keterangan"=>$this->input->post('keterangan',true)
+            ];
+            
             $this->db->where('id_lapor', $this->input->post('id_lapor'));
             $this->db->update('lapor', $data);
+            
         }    
+
         public function hapusdatalpr($id){
             $this->db->where('id_lapor',$id);
             $this->db->delete('lapor');

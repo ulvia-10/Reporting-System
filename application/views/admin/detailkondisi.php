@@ -66,7 +66,7 @@
 				<div class="col-md-6">
 					<div class="card">
 						<div class="card-header" style="text-align:center;">
-							<i class="fa fa-user" aria-hidden="true" style="color:blue"></i>  Detail Data Kondisi Wilayah
+							<i class="fa fa-user" aria-hidden="true" style="color:blue"></i> Detail Data Kondisi Wilayah
 						</div>
 						<div class="card-body">
 							<center>
@@ -78,12 +78,14 @@
 
 							if ( $lapor['foto_tragedi'] ) {
 
-								$src = base_url('assets/images'). $lapor['foto_tragedi'];
+								$src = base_url('assets/images/'). $lapor['foto_tragedi'];
 							}
 					
-					?>
+							?>
 
-							<img height="150px;" width="150px;" style=" margin-left: 150px;" src="<?= $src ;?>">
+							<div class="" style="text-align: center">
+								<img height="150px;" width="150px;" src="<?= $src ;?>">
+							</div>
 							<p class="card-text">
 								<label for="nama_lapor"><b> Nama Lapor: </b></label>
 								<?= $lapor['nama_lapor']; ?></p>

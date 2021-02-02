@@ -144,6 +144,9 @@
 								Data Pelaporan Kondisi Wilayah</h6>
 						</a>
 
+
+						<?php echo $this->session->flashdata('flash-data') ?>
+
 						<!-- Card Content - Collapse -->
 						<div class="collapse show" id="collapseCardExample">
 							<div class="card-body">

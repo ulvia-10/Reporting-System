@@ -43,9 +43,6 @@
 					<span>Data User</span></a>
 			</li>
 
-
-
-
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
 			<li class="nav-item">
@@ -63,13 +60,18 @@
 
 		<div class="container" style=" margin-left: 200px; margin-top: 50px;">
 			<div class="row-mt-3">
-				<div class="col-md-6">
+				<div class="col-md-10">
 					<div class="card">
 						<div class="card-header">
 							<i class="fas fa-edit"></i> Form Edit Data Kondisi
 						</div>
 						<div class="card-body">
 
+							<?php if (validation_errors()):?>
+							<div class="alert alert-danger" role="alert">
+								<?= validation_errors();?>
+							</div>
+							<?php endif ?>
 							<form action="" method="post">
 
 								<input type="hidden" name="id_lapor" value="<?= $lapor['id_lapor'];?>">
@@ -79,32 +81,55 @@
 										value="<?= $lapor['nama_lapor'] ;?>">
 								</div>
 								<div class="form-group">
-									<label for="nama_kategori">Pilih Kategori </label>
-									<select name="nama_kategori"  class="form-control" id="nama_kategori">
-										<option value="1">Ideologi</option>
-										<option value="2">Politik</option>
-										<option value="3">Ekonomi</option>
-										<option value="4">Sosial</option>
-										<option value="5">Budaya</option>
-										<option value="6">Pertahanan</option>
-										<option value="7">Keamanan</option>
-										<option value="8">Covid 19</option>
+									<label for="judul">Judul </label>
+
+									<input type="text" class="form-control" id="judul" name="judul" value="<?php echo $lapor['judul'] ?>">
+								</div>
+								<div class="form-group">
+									<label for="nama_kategori">Pilih Kategori</label>
+									<select name="nama_kategori" class="form-control" id="nama_kategori">
+										<?php if ( $dataCategory->num_rows() > 0 ) {
+							
+												foreach ( $dataCategory->result() AS $rowCategory ) {
+													
+													$status_selected = '';
+													if ( $rowCategory->id_kategori == $lapor['id_kategori'] ) {
+
+														$status_selected = 'selected="selected"';
+													}
+
+													echo '<option value="'.$rowCategory->id_kategori.'" '.$status_selected.'>'.ucfirst($rowCategory->nama_kategori).'</option>';
+												}
+											}
+										?>
 									</select>
 								</div>
 								<div class="form-group">
 									<label for="kecamatan">Pilih Kecamatan</label>
 									<select class="form-control" id="kecamatan" name="kecamatan">
-										<option>Lowokwaru</option>
-										<option>Kedungkandang</option>
-										<option>Blimbing</option>
-										<option>Klojen</option>
-										<option>Sukun</option>
+
+
+										<option value="Lowokwaru"
+											<?php if ( $lapor['kecamatan'] == "Lowokwaru" ) echo 'selected="selected"'; ?>>
+											Lowokwaru</option>
+										<option value="Kedungkandang"
+											<?php if ( $lapor['kecamatan'] == "Kedungkandang" ) echo 'selected="selected"'; ?>>
+											Kedungkandang</option>
+										<option value="Blimbing"
+											<?php if ( $lapor['kecamatan'] == "Blimbing" ) echo 'selected="selected"'; ?>>
+											Blimbing</option>
+										<option value="Klojen"
+											<?php if ( $lapor['kecamatan'] == "Klojen" ) echo 'selected="selected"'; ?>>
+											Klojen</option>
+										<option value="Sukun"
+											<?php if ( $lapor['kecamatan'] == "Sukun" ) echo 'selected="selected"'; ?>>
+											Sukun</option>
 									</select>
 								</div>
 								<div class="form-group">
 									<label for="tgl_tragedi">Tanggal Tragedi</label>
-									<input type="text" class="form-control" id="tgl_tragedi" name="tgl_tragedi"
-										value="<?= $lapor ['tgl_tragedi'] ;?>">
+									<input type="date" class="form-control" id="tgl_tragedi" name="tgl_tragedi"
+										value="<?= date('Y-m-d', strtotime($lapor ['tgl_tragedi'])) ;?>">
 								</div>
 								<div class="form-group">
 									<label for="alamat">Alamat</label>
@@ -113,8 +138,8 @@
 								</div>
 								<div class="form-group">
 									<label for="keterangan">Keterangan</label>
-									<input type="text" class="form-control" id="keterangan" name="keterangan"
-										value="<?= $lapor ['keterangan'] ;?>">
+									<textarea name="keterangan"
+										class="form-control"><?= $lapor ['keterangan'] ;?></textarea>
 								</div>
 
 								<button type="submit" name="edit" class="btn btn-primary float-right"> <i
