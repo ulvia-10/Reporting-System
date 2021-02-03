@@ -89,6 +89,9 @@
 							<p class="card-text">
 								<label for="nama_lapor"><b> Nama Lapor: </b></label>
 								<?= $lapor['nama_lapor']; ?></p>
+								<p class="card-text">
+								<label for="judul"><b> Judul: </b></label>
+								<?= $lapor['judul']; ?></p>
 							<p class="card-number">
 								<label for="nama_kategori"><b> Kategori : </b></label>
 								<?= $lapor['nama_kategori']; ?></p>

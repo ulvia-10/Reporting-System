@@ -8,7 +8,7 @@
 	<hr>
 
 	<?php echo $this->session->flashdata('msg') ?>
-	<div class="car	<div class="card-body">
+		<div class="card-body">
 			<?php if (validation_errors()):?>
 			<div class="alert alert-danger" role="alert">
 				<?= validation_errors();?>
@@ -60,13 +60,7 @@
 							<small>Pilih tanggal</small>
 						</div>
 					</div>
-					<!-- <div class="col-md-6">
-						<div class="form-group">
-							<label for="">Waktu</label>
-							<input class="form-control" type="time" value="13:45:00" id="example-time-input">
-							<small>Pilih waktu</small>
-						</div>
-					</div> -->
+	
 				</div>
 
 				<div class="form-group">
@@ -101,7 +95,7 @@
 				</div>
 
 			</form>
-		</div>d">
+		</div>
 	
 	</div>
 </div>

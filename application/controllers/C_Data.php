@@ -22,9 +22,7 @@
                 $data['lapor']=$this->M_Data->cariData();
             }
             $this->load->view('template/V_template_admin_header',$data);
-            // $this->load->view('template/V_header_datatabels');
             $this->load->view('admin/tables',$data);
-            // $this->load->view('template/V_footer_datatabels');
             $this->load->view('template/V_template_admin_footer',$data);
          
         }
@@ -99,14 +97,14 @@
             $pdf = new Pdf_laporan('P', 'mm', 'A4', true, 'UTF-8', false);
             // set document information
             $pdf->SetCreator(PDF_CREATOR);
-            $pdf->SetAuthor('Nicola Asuni');
-            $pdf->SetTitle('TCPDF Example 001');
+            $pdf->SetAuthor('BIDANG KEWASPADAAN DAERAH DAN PENANGANAN KONFLIK');
+            $pdf->SetTitle('BAKESBANGPOL');
             $pdf->SetSubject('TCPDF Tutorial');
             $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
-            // set default header data
-            $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
-            $pdf->setFooterData(array(0,64,0), array(0,64,128));
+            // // set default header data
+            // $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
+            // $pdf->setFooterData(array(0,64,0), array(0,64,128));
 
             // set header and footer fonts
             $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -148,40 +146,38 @@
             $pdf->AddPage();
             // header table
 
-
-            $namaMahasiswa = ['Ulvia', 'Rizky Aul', 'Lusiana', 'Ely MSI'];
-            $table_body = '';
-
-            foreach ( $namaMahasiswa AS $row ) {
-
-                $table_body .= '<tr>
+            $pdf = new \TCPDF();
+            $pdf->AddPage('L', 'mm', 'A4');
+            $pdf->SetFont('', 'B', 14);
+            $pdf->Cell(277, 10, "DAFTAR PELAPORAN KONDISI WILAYAH", 0, 1, 'C');
+            $pdf->SetAutoPageBreak(true, 0);
+     
+            // Add Header
+            $pdf->Ln(10);
+            $pdf->SetFont('', 'B', 12);
+            $pdf->Cell(10, 8, "No", 1, 0, 'C');
+            $pdf->Cell(40, 8, "Nama Pelapor", 1, 0, 'C');
+            $pdf->Cell(50, 8, "Tanggal", 1, 0, 'C');
+            // $pdf->Cell(50, 8, "Kategori", 1, 0, 'C');
+            $pdf->Cell(60, 8, "Kecamatan", 1, 1, 'C');
+     
+            $pdf->SetFont('', '', 12);
+            $lapor = $this->db->get('lapor')->result();
+            $no=0;
+            foreach ($lapor as $data){
+                $no++;
+                $pdf->Cell(10,8,$no,1,0, 'C');
+                $pdf->Cell(40,8,$data->nama_lapor,1,0);
+                $pdf->Cell(50,8,$data->tgl_tragedi,1,0);
+                // $pdf->Cell(50,8,$data->id_kategori,1,1);
+                $pdf->Cell(60,8,$data->kecamatan,1,1);
                 
-                    <td>Nomornya</td>
-                    <td></td>
-                    <td>'.$row.'</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>';
             }
 
-            $table = '
-            <table border="1" width="100%" cellpadding="6">
-                <tr>
-                    <th width="5%" height="20" padding="5" align="center"><b>No</b></th>
-                    <th width="11%" align="center"><b>Tanggal</b></th>
-                    <th width="15%" align="center"><b>Nama</b></th>
-                    <th width="21%" align="center"><b>Status</b></th>
-                    <th width="10%" align="center"><b>Keperluan</b></th>
-                    <th width="25%" align="center"><b>Rincian</b></th>
-                    <th width="13%" align="center"><b>Selesai Pelayanan</b></th>
-                    
-                </tr>
-                
-                '.$table_body.'
-            </table>';
-
+            $pdf->SetFont('', 'B', 10);
+            $pdf->Cell(277, 10, "Laporan Kondisi Wilayah di Kota Malang 2021", 0, 1, 'L');
+     
+            $pdf->Output('LaporanKondisiWilayah.pdf'); 
 
             $pdf->writeHTML($table, true, false, true, false, '');
 
@@ -190,12 +186,15 @@
 
             // Close and output PDF document
             // This method has several options, check the source code documentation for more information.
-            $pdf->Output('testing.pdf', 'I');
+            $pdf->Output('LaporanKondisiWilayah.pdf', 'I');
 
             //============================================================+
             // END OF FILE
             //============================================================+
                     }
+            public function CetakDataById($id){
+
+            }
 
     }
     ?>

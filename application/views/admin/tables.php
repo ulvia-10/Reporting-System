@@ -132,8 +132,44 @@
 				</nav>
 				<!-- End of Topbar -->
 
+
+
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
+					<!-- Collapsable Card Example Filter Data-->
+					<div class="card shadow mb-2">
+						<!-- Card Header - Accordion -->
+						<a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" id="id="
+							multiCollapseExample1" role="button" aria-expanded="true"
+							aria-controls="collapseCardExample">
+							<h6 class="m-0 font-weight-bold text-primary"> <i class="fa fa-print"
+									aria-hidden="true"></i>
+								Filter Data</h6>
+						</a>
+
+						<?php echo $this->session->flashdata('flash-data') ?>
+						<div class="card-body">
+							<div class="form-group col-md-4">
+								<label for="kecamatan">Pilih Kecamatan</label>
+								<select class="form-control" id="kecamatan" name="kecamatan">
+									<option>Lowokwaru</option>
+									<option>Kedungkandang</option>
+									<option>Blimbing</option>
+									<option>Klojen</option>
+									<option>Sukun</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label for="kategori">Print by time</label>
+								<select class="form-control" id="kategori" name="kategori">
+									<option>Hari ini</option>
+									<option>Bulanan</option>
+								</select>
+							</div>
+							<div class="col-md-6"><button type="button" class="btn btn-primary">Cetak</button></div>
+						</div>
+
+					</div>
 
 					<!-- Collapsable Card Example -->
 					<div class="card shadow mb-4">
@@ -151,7 +187,7 @@
 						<div class="collapse show" id="collapseCardExample">
 							<div class="card-body">
 								<div class="table-responsive">
-									<a href="<?= base_url();?>C_Data/tambah/" class="btn btn-primary btn-sm mb-3">
+									<a href="<?= base_url();?>C_report/tambah/" class="btn btn-primary btn-sm mb-3">
 										<i class="fa fa-plus" aria-hidden="true"></i> Tambah Data</a>
 									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 										<thead style=" text-align: center;">
