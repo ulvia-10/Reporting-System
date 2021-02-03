@@ -119,7 +119,7 @@
 									Profile
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="C_Login/index" data-toggle="modal"
+								<a class="dropdown-item" href="Auth/logout/" data-toggle="modal"
 									data-target="#logoutModal">
 									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Logout
@@ -148,26 +148,26 @@
 						</a>
 
 						<?php echo $this->session->flashdata('flash-data') ?>
-						<div class="card-body">
-							<div class="form-group col-md-4">
-								<label for="kecamatan">Pilih Kecamatan</label>
-								<select class="form-control" id="kecamatan" name="kecamatan">
-									<option>Lowokwaru</option>
-									<option>Kedungkandang</option>
-									<option>Blimbing</option>
-									<option>Klojen</option>
-									<option>Sukun</option>
-								</select>
+						<form action="<?php echo base_url('C_Data/exportLaporanPDF') ?>" method="GET">
+							<div class="row">
+
+								<div class="form-group col-md-3">
+									<label for="kategori">Lihat berdasarkan</label>
+									<input type="date" class="form-control" name="start">
+								</div>
+								<div class="form-group col-md-2">
+									<div style="margin-top: 40px">Sampai</div>
+								</div>
+								<div class="form-group col-md-3">
+									<input type="date" class="form-control" name="end" style="margin-top: 35px">
+								</div>
+								<div class="col-md-2"><button type="submit" style="margin-top: 35px"
+										class="btn btn-primary">Cetak</button></div>
+								<div class="col-md-2"><a href="<?php echo base_url('C_Data') ?>"
+										style="margin-top: 35px; class="btn btn-default" >Reset</a></div>
 							</div>
-							<div class="form-group col-md-4">
-								<label for="kategori">Print by time</label>
-								<select class="form-control" id="kategori" name="kategori">
-									<option>Hari ini</option>
-									<option>Bulanan</option>
-								</select>
-							</div>
-							<div class="col-md-6"><button type="button" class="btn btn-primary">Cetak</button></div>
-						</div>
+
+						</form>
 
 					</div>
 
@@ -197,7 +197,6 @@
 												<th>Tanggal</th>
 												<th>Kategori</th>
 												<th>Kecamatan</th>
-												<th>Status Lapor</th>
 												<th>Action</th>
 											</tr>
 										</thead>
@@ -210,7 +209,6 @@
 												<td><?= $lpr["tgl_tragedi"];?></td>
 												<td><?= $lpr["nama_kategori"];?></td>
 												<td><?= $lpr["kecamatan"]?></td>
-												<td><a class="badge badge-success"><?= $lpr["status_lapor"]; ?> </a>
 												</td>
 												<td>
 													<!-- detail -->
@@ -222,9 +220,9 @@
 														class="badge badge-success"><i class="fa fa-edit "></i> </a>
 													<!-- cetak -->
 
-													<a href="<?= base_url();?>C_Data/CetakData/<?=$lpr['id_lapor'];?>"
-														class="badge badge-secondary "> <i class="fa fa-print"
-															aria-hidden="true"></i></a>
+													<a href="<?= base_url();?>C_Data/getCetakById/<?=$lpr['id_lapor'];?>"
+														class="badge badge-secondary " target="_blank"> <i
+															class="fa fa-print"></i></a>
 													<!-- hapus -->
 													<a href="<?= base_url();?>C_Data/hapus/<?=$lpr['id_lapor'];?>"
 														class="badge badge-danger "> <i class="fa fa-trash"
@@ -283,7 +281,7 @@
 				<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="<?= base_url();?>C_Login/index/ ">Logout</a>
+					<a class="btn btn-primary" href="<?= base_url();?>Auth/logout/ ">Logout</a>
 				</div>
 			</div>
 		</div>

@@ -40,15 +40,15 @@
 			<!-- Nav Item - Tables -->
 			<li class="nav-item">
 				<a class="nav-link" href="<?= base_url();?>C_Data/indexuser/ ">
-				
-					<span> 	<i class="fa fa-clipboard" aria-hidden="true"></i></span>Data User</a>
+
+					<span> <i class="fa fa-clipboard" aria-hidden="true"></i></span>Data User</a>
 			</li>
 
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url();?>C_Login/index ">
+				<a class="nav-link" href="<?= base_url();?>Auth/logout/ ">
 					<span> <i class="fa fa-power-off" aria-hidden="true"></i> Log Out</span></a>
 			</li>
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -121,7 +121,7 @@
 									Profile
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="C_Login/index" data-toggle="modal"
+								<a class="dropdown-item" href="Auth/logout/" data-toggle="modal"
 									data-target="#logoutModal">
 									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Logout

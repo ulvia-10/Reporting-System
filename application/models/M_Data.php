@@ -5,6 +5,64 @@
         public function count_all(){
             return $this->db->count_all('lapor'); // Untuk menghitung semua data lapor
           }
+
+
+        // get data lapor
+        function getDataLapor( $key = null ) {
+
+            $data = array();
+
+
+            $this->db->select('lapor.*, user.*, kategori.*')->from('lapor');
+            $this->db->join('user', 'user.id_user = lapor.id_user');
+            $this->db->join('kategori', 'kategori.id_kategori = lapor.id_kategori');
+            
+            if ( $key ) {
+                
+                $this->db->where($key);
+            }
+
+            $dataLapor = $this->db->get();
+
+            // cek isi
+            if ( $dataLapor->num_rows() > 0 ) {
+
+                foreach ( $dataLapor->result_array() AS $row ) {
+
+                    array_push( $data, array(
+
+                        // tabel lapor
+                        'id_lapor'      => $row['id_lapor'],
+                        'id_kategori'   => $row['id_kategori'],
+                        'id_user'       => $row['id_user'],
+                        'nama_lapor'    => $row['nama_lapor'],
+                        'kecamatan' => $row['kecamatan'],
+                        'alamat'    => $row['alamat'],
+                        'tgl_tragedi'   => $row['tgl_tragedi'],
+                        'judul'         => $row['judul'],
+                        'keterangan'    => $row['keterangan'],
+                        'foto_tragedi'  => $row['foto_tragedi'],
+                        'created_at'    => $row['created_at'],
+
+                        // tabel kategori
+                        'nama_kategori' => $row['nama_kategori'],
+
+                        // user
+                        'nama_lengkap'  => $row['nama_lengkap'],
+                    ) );
+                }
+            }
+
+            return array(
+
+                'status'    => count( $data ) > 0 ? true : false,
+                'data'      => $data
+            );
+        }
+
+
+
+
           public function getlaporByID($id)
         {
             // return $this->db->get_where('lapor',array('id_lapor'=>$id))->row_array();
@@ -97,7 +155,200 @@
             $query = $this->db->order_by('id_lapor', 'ASC')->get('lapor');
             return $query->result(); 
         }
-      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function processExportPDF() {
+
+            $this->load->library('pdf_laporan');
+
+
+            // data lapor 
+            $dataLapor = $this->getDataLapor();
+            $sortDataLapor = array();
+
+
+            // start + end
+            $start = $this->input->get('start');
+            $end = $this->input->get('end');
+
+            $caption = "";
+            if ( $dataLapor['status'] == true ) {
+
+                foreach ( $dataLapor['data'] AS $row ) {
+
+                    if ( $start ) { // apakah ada isinya ?
+
+                        $tanggal_kejadian = date('Y-m-d', strtotime( $row['tgl_tragedi'] ));
+                        
+                        if ( (strlen($end) == 0) && ($start == $tanggal_kejadian) ) {
+                            
+                            array_push( $sortDataLapor, $row );
+                            $caption = "Menampilkan laporan kejadian berdasarkan tanggal ". date('d F Y', strtotime( $start ));
+
+                        } else if ( ($start == $end) && ($start == $tanggal_kejadian) ) { // filter by start date
+
+                            array_push( $sortDataLapor, $row );
+                            $caption = "Menampilkan laporan kejadian berdasarkan tanggal ". date('d F Y', strtotime( $start ));
+                        
+                        
+                        } else if ( ($start <= $tanggal_kejadian) && ($end >= $tanggal_kejadian) ) { // filter by range start date ... end date
+
+                            array_push( $sortDataLapor, $row );
+                            $caption = "Menampilkan laporan kejadian berdasarkan tanggal ". date('d F Y', strtotime( $start )). ' sampai '. date('d F Y', strtotime($end));
+                        }
+                    
+                    } else {
+                        // show all data without filter start date + end
+                        array_push( $sortDataLapor, $row );
+                        $caption = "Menampilkan keseluruhan laporan kejadian";
+                    }
+                }
+            }
+
+
+
+
+            $pdf = new Pdf_laporan('P', 'mm', 'A4', true, 'UTF-8', false);
+            // set document information
+            $pdf->SetCreator(PDF_CREATOR);
+            $pdf->SetAuthor('BIDANG KEWASPADAAN DAERAH DAN PENANGANAN KONFLIK');
+            $pdf->SetTitle('BAKESBANGPOL');
+            $pdf->SetSubject('TCPDF Tutorial');
+            $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+
+            // // set default header data
+            // $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
+            // $pdf->setFooterData(array(0,64,0), array(0,64,128));
+
+            // set header and footer fonts
+            $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+            $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+            // set default monospaced font
+            $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+            // set margins
+            $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+            $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+            $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+            // set auto page breaks
+            $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+            // set image scale factor
+            $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+            // set some language-dependent strings (optional)
+            if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+                require_once(dirname(__FILE__).'/lang/eng.php');
+                $pdf->setLanguageArray($l);
+            }
+
+            // ---------------------------------------------------------
+
+            // set default font subsetting mode
+            $pdf->setFontSubsetting(true);
+
+            // Set font
+            // dejavusans is a UTF-8 Unicode font, if you only need to
+            // print standard ASCII chars, you can use core fonts like
+            // helvetica or times to reduce file size.
+            // $pdf->SetFont('dejavusans', '', 14, '', true);
+
+            // Add a page
+            // This method has several options, check the source code documentation for more information.
+            $pdf->AddPage();
+            // header table
+
+            $pdf = new \TCPDF();
+            $pdf->AddPage('P', 'mm', 'A4');
+            $pdf->SetFont('', 'B', 14);
+            $pdf->Cell(200, 10, "DAFTAR PELAPORAN KONDISI WILAYAH", 0, 1, 'C');
+            $pdf->SetAutoPageBreak(true, 0);
+            
+
+            $table_body = "";
+            if ( count($sortDataLapor) > 0 ) {
+
+                $nomor = 1;
+                foreach ( $sortDataLapor AS $rowSort ) {
+
+                    $table_body .= '<tr>
+                        <td>'.$nomor.'</td>
+                        <td>'.$rowSort['nama_lapor'].'</td>
+                        <td>'.$rowSort['judul'].'</td>
+                        <td>'.$rowSort['nama_kategori'].'</td>
+                        <td>'.$rowSort['kecamatan'].'</td>
+                        <td>'.$rowSort['keterangan'].'</td>
+                        <td>'.date('d/m/Y', strtotime($rowSort['tgl_tragedi'])).'</td>
+                    </tr>';
+
+                    $nomor++;
+                }
+                
+            }
+
+
+            $table = '<table width="100%" border="1" cellpadding="6">
+
+                <tr>
+                    <td width="5%">No</td>
+                    <td width="15%">Nama Lapor</td>
+                    <td width="15%">Judul</td>
+                    <td width="15%">Kategori</td>
+                    <td width="15%">Kecamatan</td>
+                    <td width="20%">Keterangan</td>
+                    <td width="15%">Tanggal</td>
+                </tr>
+
+                '.$table_body.'
+            </table>';
+
+
+            $pdf->SetFont('', 'B', 10);
+            $pdf->Cell(27, 10, "Laporan Kondisi Wilayah di Kota Malang 2021", 0, 1, 'L');
+            
+            $pdf->setFont('', 'B', 8);
+            $pdf->Cell(27, 10, ucwords($caption), 0, 1, 'L');
+     
+            $pdf->writeHTML($table, true, false, true, false, '');
+            $pdf->Output('LaporanKondisiWilayah.pdf'); 
+
+
+            //============================================================+
+            // END OF FILE
+            //============================================================+
+        }
 
    }
 ?>

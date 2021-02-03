@@ -237,7 +237,7 @@
 									Profile
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
+								<a class="dropdown-item" href="Auth/logout/" data-toggle="modal" data-target="#logoutModal">
 									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Logout
 								</a>
@@ -303,76 +303,10 @@
 							</div>
 						</div>
 
-						<!-- Pie Chart -->
-						<div class="col-xl-3 col-md-6">
-							<div class="card shadow mb-4">
-								<!-- Card Header - Dropdown -->
-								<div
-									class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-									<h6 class="m-0 font-weight-bold text-primary">Pie Chart </h6>
-									<div class="dropdown no-arrow">
-										<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="fal">
-											<i class="fas fallipsis-v fa-sm fa-fw text-gray-400"></i>
-										</a>
-										<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-											aria-labelledby="dropdownMenuLink">
-											<div class="dropdown-header">Dropdown Header:</div>
-											<a class="dropdown-item" href="#">Action</a>
-											<a class="dropdown-item" href="#">Another action</a>
-											<div class="dropdown-divider"></div>
-											<a class="dropdown-item" href="#">Something else here</a>
-										</div>
-									</div>
-								</div>
-								<!-- Card Body -->
-								<div class="card-body">
-									<div class="chart-pie pt-4 pb-">
-										<canvas id="myPieChart"></canvas>
-									</div>
-									<div class="mt-4 text-center small">
-										<span class="mr-2">
-											<i class="fas fa-circle text-primary"></i> Ideologi
-										</span>
-										<span class="mr-2">
-											<i class="fas fa-circle text-success"></i> Sosial
-										</span>
-										<span class="mr-2">
-											<i class="fas fa-circle text-danger"></i> Politik
-										</span>
-										<span class="mr-2">
-											<i class="fas fa-circle text-warning"></i> Ekonomi
-										</span>
-										<span class="mr-2">
-											<i class="fas fa-circle text-secondary"></i> Pertahanan
-										</span>
-										<span class="mr-2">
-											<i class="fas fa-circle text-dark"></i> Keamanan
-										</span>
-										<span class="mr-2">
-											<i class="fas fa-circle text-white"></i> Sosial
-										</span>
-										<span class="mr-2">
-											<i class="fas fa-circle text-light"></i> Budaya
-										</span>
-										<span class="mr-2">
-											<i class="fas fa-circle text-info"></i> Covid 19
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
+			
 
 
 
-
-					<!-- Content Row -->
-
-					<div class="row">
-
-
-						
-					</div>
 
 
 				</div>
@@ -382,13 +316,13 @@
 			<!-- End of Main Content -->
 
 			<!-- Footer -->
-			<footer class="sticky-footer bg-white">
+			<!-- <footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
 						<span>Copyright 2021 &copy; Bakesbangpol</span>
 					</div>
 				</div>
-			</footer>
+			</footer> -->
 			<!-- End of Footer -->
 
 		</div>
@@ -416,7 +350,7 @@
 				<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="<?= base_url();?>C_Login/index/ ">Logout</a>
+					<a class="btn btn-primary" href="<?= base_url();?>Auth/logout/ ">Logout</a>
 				</div>
 			</div>
 		</div>

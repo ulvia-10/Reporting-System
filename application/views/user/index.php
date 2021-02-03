@@ -51,7 +51,7 @@
           <li><a href="#contact">Contact</a></li>
           <li><a href="<?= base_url();?>C_Report/index/"> Report <i class="fas fa-user-clock "></i> </a></li>
 
-          <li class="get-started"><a href="<?= base_url();?>C_Login/index/">Login <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </a></li>
+          <li class="get-started"><a href="<?= base_url();?>Auth/index/">Login <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </a></li>
         </ul>
       </nav><!-- .nav-menu -->
 

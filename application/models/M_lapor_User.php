@@ -18,8 +18,7 @@
 
             $foto = "";
 
-            $id_user = 1; // percobaan id (sementara)
-            // $id_user = $this->session->userdata('sess_id');
+            $id_user = $this->session->userdata('sess_id');
 
             $config['upload_path']          = './assets/images/'; // direktori lokal
             $config['allowed_types']        = 'jpeg|jpg|png'; // ekstensi
