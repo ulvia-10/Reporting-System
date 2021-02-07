@@ -19,7 +19,6 @@
 
             $this->load->view('template/V_template_header'); // header
             $this->load->view('user/V_lapor', $data); // main content
-            $this->load->view('template/V_template_footer'); // header
             
         }
         public function tambah()

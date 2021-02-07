@@ -48,8 +48,7 @@
           <li class="active"><a href="#hero"> Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#portfolio">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="<?= base_url();?>C_Report/index/"> Report <i class="fas fa-user-clock "></i> </a></li>
+          <li><a href="#contact">Contact Us</a></li>
 
           <li class="get-started"><a href="<?= base_url();?>Auth/index/">Login <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </a></li>
         </ul>

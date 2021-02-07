@@ -45,11 +45,6 @@
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url();?>Auth/index">
-					<i class="fa fa-power-off" aria-hidden="true"></i>
-					<span> Log Out</span></a>
-			</li>
 			<!-- Sidebar Toggler (Sidebar) -->
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -65,7 +60,7 @@
 
 				<!-- Topbar -->
 				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+					<h4 style="color:black;margin-left:350px;">Hi! Welcome Admin! </h4>
 					<!-- Sidebar Toggle (Topbar) -->
 					<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
 						<i class="fa fa-bars"></i>

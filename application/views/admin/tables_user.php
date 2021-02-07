@@ -47,10 +47,7 @@
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url();?>Auth/logout/ ">
-					<span> <i class="fa fa-power-off" aria-hidden="true"></i> Log Out</span></a>
-			</li>
+		
 			<!-- Sidebar Toggler (Sidebar) -->
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -154,7 +151,6 @@
 											<th>Email</th>
 											<th>No Telepon</th>
 											<th>Jenis Kelamin</th>
-											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody style=" text-align:center;">

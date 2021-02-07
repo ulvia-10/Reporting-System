@@ -49,7 +49,7 @@ class Auth extends CI_Controller
                         redirect('C_Data');
                     
                     } else {
-                        redirect('C_lapor_User');
+                        redirect('C_report');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">

@@ -43,7 +43,7 @@
                                             Create Account!</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="<?= base_url('C_report/index'); ?>">Back To HOMEPAGE</a>
+                                        <a class="small" href="<?= base_url('C_lapor_User'); ?>">Back To HOMEPAGE</a>
                                     </div>
                                 </div>
                             </div>
