@@ -84,6 +84,11 @@
             $this->session->set_flashdata('flash-data','dihapus');
             redirect('C_Data/index','refresh');
         }
+        public function hapususer($id){
+            $this->M_Data->hapusdatausr($id);
+            $this->session->set_flashdata('flash-data','dihapus');
+            redirect('C_Data/indexuser','refresh');
+        }
 
 
         public function cetakData(){
@@ -293,17 +298,30 @@
 
             // html 
             $src = base_url('assets/img/hero-img.png');
+            $img = "";
 
             if ( $row['foto_tragedi'] ) {
 
-                $src = base_url('assets/images/'. $row['foto_tragedi']);
+								$checkDataPhoto = explode(',', $row['foto_tragedi']);
+								
+								// apakah gambar tsb lebih dari 1 ?
+								if ( count($checkDataPhoto) > 1 ) {
+
+									foreach ( $checkDataPhoto AS $rowPhoto ) {
+
+										$img .= '<img src="'.base_url('assets/images/'. $rowPhoto).'" style="width: 400px"> <hr>';
+									}
+								} else { // gambar hanya 1
+
+									$img = '<img src="'.base_url('assets/images/'. $row['foto_tragedi']).'" style="width: 400px">';
+								}	
             }
 
             $table = '<table width="100%" border="1">
 
                 <tr>
                     <td width="25%" rowspan="2">
-                        <img src="'.$src.'" alt="Image" style="width: 400px"/>
+                        '.$img.'
                     </td>
                     <td width="75%" colspan="2">
                         <label style="font-size: 14px"><b>Informasi Detail</b></label><br>

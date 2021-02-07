@@ -17,10 +17,14 @@
     <!-- Page level plugins -->
     <script src="<?php echo base_url() ?>assets/vendor/vendor-admin/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url() ?>assets/vendor/vendor-admin/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script src="<?php echo base_url() ?>assets/plugins/dropzone/dropzone.js"></script>
     <script>
     	// Call the dataTables jQuery plugin
     	$(document).ready(function () {
-    		$('#dataTable').DataTable();
+            $('#dataTable').DataTable();
+            
+            $('.carousel').carousel();
     	});
 
     </script>

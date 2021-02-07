@@ -46,7 +46,7 @@
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url();?>C_Login/index ">
+				<a class="nav-link" href="<?= base_url();?>Auth/logout">
 					<i class="fa fa-power-off" aria-hidden="true"></i>
 					<span> Log Out</span></a>
 
@@ -164,7 +164,7 @@
 								<div class="col-md-2"><button type="submit" style="margin-top: 35px"
 										class="btn btn-primary">Cetak</button></div>
 								<div class="col-md-2"><a href="<?php echo base_url('C_Data') ?>"
-										style="margin-top: 35px; class="btn btn-default" >Reset</a></div>
+										style="margin-top: 35px; margin-left:-30px; "class="btn btn-default">Reset</a></div>
 							</div>
 
 						</form>

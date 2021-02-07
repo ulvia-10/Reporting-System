@@ -154,6 +154,7 @@
 											<th>Email</th>
 											<th>No Telepon</th>
 											<th>Jenis Kelamin</th>
+											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody style=" text-align:center;">
@@ -165,7 +166,7 @@
 											<td><?= $usr["email"];?></td>
 											<td><?= $usr["no_telp"]?></td>
 											<td><?= $usr["jenis_kelamin"];?></td>
-											</td>
+										
 											<?php 
                                         }
                                          ?>
@@ -216,7 +217,7 @@
 				<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="<?= base_url();?>C_Login/index/ ">Logout</a>
+					<a class="btn btn-primary" href="<?= base_url();?>Auth/logout">Logout</a>
 				</div>
 			</div>
 		</div>

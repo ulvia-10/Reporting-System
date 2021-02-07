@@ -22,5 +22,8 @@
 	<link href="<?php echo base_url('assets/vendor/vendor-admin/datatables/dataTables.bootstrap4.min.css') ?>"
 		rel="stylesheet">
 
+	<!-- Dropzone -->
+	<link rel="stylesheet" href="<?php echo base_url('assets/plugins/dropzone/dropzone.css') ?>">
+
 
 </head>

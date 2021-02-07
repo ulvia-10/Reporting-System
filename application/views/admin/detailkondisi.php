@@ -73,19 +73,34 @@
 								<h5 class="card-title"><strong><?= $lapor['nama_lapor']; ?></strong></h5>
 							</center>
 
+
+
 							<?php
 							$src = 'https://pertaniansehat.com/v01/wp-content/uploads/2015/08/default-placeholder.png';
 
 							if ( $lapor['foto_tragedi'] ) {
 
-								$src = base_url('assets/images/'). $lapor['foto_tragedi'];
+								$src = "";
+								$checkDataPhoto = explode(',', $lapor['foto_tragedi']);
+								
+								// apakah gambar tsb lebih dari 1 ?
+								if ( count($checkDataPhoto) > 1 ) {
+
+									foreach ( $checkDataPhoto AS $rowPhoto ) {
+
+										echo '<img src="'.base_url('assets/images/'. $rowPhoto).'" style="width: 100px"> <hr>';
+									}
+								} else { // gambar hanya 1
+
+									echo '<img src="'.base_url('assets/images/'. $lapor['foto_tragedi']).'" style="width: 100px">';
+								}	
+
+
 							}
 					
 							?>
 
-							<div class="" style="text-align: center">
-								<img height="150px;" width="150px;" src="<?= $src ;?>">
-							</div>
+						
 							<p class="card-text">
 								<label for="nama_lapor"><b> Nama Lapor: </b></label>
 								<?= $lapor['nama_lapor']; ?></p>
@@ -106,7 +121,7 @@
 							$dayOfName = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"];
 							$requestDay = date('N', strtotime($lapor['tgl_tragedi']));
 						?>
-								<?= $dayOfName[$requestDay] .' '. date('d F Y H.i A', strtotime($lapor['tgl_tragedi'])); ?>
+								<?= @$dayOfName[$requestDay] .' '. date('d F Y H.i A', strtotime($lapor['tgl_tragedi'])); ?>
 							</p>
 							<p class="card-text">
 								<label for="alamat"><b> Alamat : </b></label>

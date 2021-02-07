@@ -40,6 +40,9 @@
 
 	<!-- Template Main JS File -->
 	<script src="<?php echo base_url() ?>assets/js/main.js"></script>
+	
+	<!-- Dropzone -->
+	<script src="<?php echo base_url() ?>assets/plugins/dropzone/dropzone.js"></script>
 
 </body>
 </html>

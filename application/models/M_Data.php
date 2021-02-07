@@ -151,41 +151,17 @@
             $this->db->delete('lapor');
             redirect('C_Data/index','refresh');
         }
+        
+        public function hapusdatausr($id){
+            $this->db->where('id_user',$id);
+            $this->db->delete('user');
+            redirect('C_Data/indexuser','refresh');
+        }
         public function datatabels(){
             $query = $this->db->order_by('id_lapor', 'ASC')->get('lapor');
             return $query->result(); 
         }
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         function processExportPDF() {
 

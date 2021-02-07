@@ -86,7 +86,10 @@
 
 				<div class="form-group">
 					<label for="foto">Foto</label>
-					<input type="file" class="form-control" id="foto" name="foto_tragedi" required> 
+					<div class="dropzone" id="dropzone">
+					
+						<input type="file" class="form-control" id="foto" name="foto_tragedi[]" required multiple> 
+					</div>
 				</div>
 
 				<div class="form-group" style="margin-left:75%">
