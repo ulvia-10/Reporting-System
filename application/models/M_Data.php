@@ -131,6 +131,63 @@
 
         public function ubahdata(){
             
+
+            $id_lapor = $this->input->post('id_lapor');
+
+            $config['upload_path']          = './assets/images/'; // direktori lokal
+            $config['allowed_types']        = 'jpeg|jpg|png'; // ekstensi
+            $config['max_size']             = 3000; // 3 mb
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            $photo = "";
+            
+            if ( !empty( $_FILES['foto_tragedi']['name'] ) ) {
+
+                // check data upload 
+                if ( !$this->upload->do_upload('foto_tragedi') ){
+
+                    $upload_error = $this->upload->display_errors();
+
+                    $msg = '<div class="alert alert-danger">Informasi pelaporan gagal diperbarui <br> <p>'.$upload_error.'</p> <small>Pada tanggal '.date('d F Y H.i A').'</small></div>';
+                    $this->session->set_flashdata('flash-data', $msg);
+                    redirect('C_Data/edit/'. $id_lapor);
+
+
+                } else {
+
+                    $new_photo = $this->upload->data('file_name');  // new file
+                    $dataLaporById = $this->db->get_where('lapor', ['id_lapor' => $id_lapor])->row();
+
+                    if ( $dataLaporById->foto_tragedi ) {
+
+                        $data_foto = explode(',', $dataLaporById->foto_tragedi);
+
+                        array_push( $data_foto, $new_photo );
+
+                        // implode  
+                        if ( count( $data_foto ) > 1 ) {
+
+                            $photo = implode(',', $data_foto);
+                        } else { // jika data foto hnaya 1
+
+                            $photo = $new_photo;
+                        }
+                    }
+                    
+                }
+            } else {
+
+                $dataLaporById = $this->db->get_where('lapor', ['id_lapor' => $id_lapor])->row();
+                $photo = $dataLaporById->foto_tragedi;
+            }
+
+
+
+
+
+
             $data = [
                 "id_kategori"   =>$this->input->post('nama_kategori',true),
                 "nama_lapor"    =>$this->input->post('nama_lapor',true),
@@ -138,11 +195,16 @@
                 "alamat"        =>$this->input->post('alamat',true),
                 "tgl_tragedi"   =>$this->input->post('tgl_tragedi',true),
                 "judul"     =>$this->input->post('judul',true),
-                "keterangan"=>$this->input->post('keterangan',true)
+                "keterangan"=>$this->input->post('keterangan',true),
+                'foto_tragedi' => $photo
             ];
             
-            $this->db->where('id_lapor', $this->input->post('id_lapor'));
+            $this->db->where('id_lapor', $id_lapor);
             $this->db->update('lapor', $data);
+
+            $msg = '<div class="alert alert-info">Informasi pelaporan berhasil diperbarui <br><small>Pada tanggal '.date('d F Y H.i A').'</small></div>';
+            $this->session->set_flashdata('flash-data', $msg);
+            redirect('C_Data/edit/'. $id_lapor);
             
         }    
 
@@ -324,6 +386,75 @@
             //============================================================+
             // END OF FILE
             //============================================================+
+        }
+
+
+
+
+
+
+        // remove photo
+        function processRemovePhoto( $id_lapor, $index ) {
+
+
+            $getDataLaporById = $this->db->get_where('lapor', ['id_lapor' => $id_lapor])->row();
+            
+            $data_photo = explode(',', $getDataLaporById->foto_tragedi);
+            
+            $new_photoupdate = array();
+            for ( $i = 0; $i < count($data_photo); $i++ ) {
+
+                if ( $i != $index ) {
+
+                    array_push( $new_photoupdate, $data_photo[$i] );
+                }
+            }
+
+            $konversiComma = implode(',', $new_photoupdate);
+
+            $dataUpdate = array(
+
+                'foto_tragedi'  => $konversiComma
+            );
+
+            $this->db->where('id_lapor', $id_lapor);
+            $this->db->update('lapor', $dataUpdate);
+
+            redirect('C_Data/edit/'. $id_lapor);
+
+
+            /**
+             * 
+             *  kolom tb = img1, img 2, img 3 
+             *  $data_photo = [img1, img2, img3]; 
+             *  
+             *  // Perulangan 1  | $i = 0; $index = 1;
+             *  - apakah 0 < 3 ? 
+             *     a. iya | apakah $i tidak sama dengan $index ? 
+             *          -- iya maka foto index ke - i  (img1 masuk)
+             *  
+             *  // perulangan 2 | $i = 1; $index = 1; 
+             *  - apakah 1 < 3 ? 
+             *      a. iya | apakah $i tidak sama dengan $index ? 
+             *          -- tidak maka foto index ke - i (img2 tidak masuk)
+             * 
+             *  // Perulangan 3 | $i = 2; $index = 1; 
+             *  - apakah 2 < 3 ? 
+             *      a. iya | apakah $i tidak sama dengan $index ? 
+             *          -- iya maka foto index ke - i  (img3 masuk)
+             * 
+             *  // Perulangan 4 | $i = 3; $index = 1; 
+             *  - apakah 3 < 3 ? 
+             *      b. enggak | stop perulangan ... 
+             * 
+             * 
+             *  // summary 
+             *  nilai yang masuk = img1, img3
+             * 
+             * 
+             *  update kolom foto yang di tabel ... 
+             */
+
         }
 
    }

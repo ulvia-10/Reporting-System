@@ -45,7 +45,7 @@
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
-			
+
 			<!-- Sidebar Toggler (Sidebar) -->
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -101,8 +101,9 @@
 						<li class="nav-item dropdown no-arrow">
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small"> <i class="fa fa-user-circle" aria-hidden="true"></i> Profile</span>
-							
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small"> <i class="fa fa-user-circle"
+										aria-hidden="true"></i> Profile</span>
+
 							</a>
 							<!-- Dropdown - User Information -->
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -111,7 +112,7 @@
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 									Profile
 								</a>
-							
+
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="Auth/logout/" data-toggle="modal"
 									data-target="#logoutModal">
@@ -125,8 +126,6 @@
 
 				</nav>
 				<!-- End of Topbar -->
-
-
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
@@ -158,7 +157,8 @@
 								<div class="col-md-2"><button type="submit" style="margin-top: 35px"
 										class="btn btn-primary">Cetak</button></div>
 								<div class="col-md-2"><a href="<?php echo base_url('C_Data') ?>"
-										style="margin-top: 35px; margin-left:-30px; "class="btn btn-default">Reset</a></div>
+										style="margin-top: 35px; margin-left:-30px; " class="btn btn-default">Reset</a>
+								</div>
 							</div>
 
 						</form>

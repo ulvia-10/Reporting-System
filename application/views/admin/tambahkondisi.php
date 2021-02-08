@@ -63,7 +63,8 @@
 				<div class="col-md-7">
 					<div class="card">
 						<div class="card-header">
-							<strong style="margin-left: 80px;"> <i class="fa fa-user-plus" style="color:blue;"  aria-hidden="true"></i>  Form
+							<strong style="margin-left: 80px;"> <i class="fa fa-user-plus" style="color:blue;"
+									aria-hidden="true"></i> Form
 								Tambah Data Lapor</strong>
 						</div>
 						<div class="cara body p-3">
@@ -78,7 +79,7 @@
 									<label for="nama_lapor">Nama</label>
 									<input type="text" class="form-control" id="nama_lapor" name="nama_lapor" required>
 								</div>
-								
+
 								<div class="form-group">
 									<label for="judul">Judul</label>
 									<input type="text" class="form-control" id="judul" name="judul" required>

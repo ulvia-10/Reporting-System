@@ -58,9 +58,9 @@
 		</ul>
 		<!-- End of Sidebar -->
 
-		<div class="container" style=" margin-left: 200px; margin-top: 50px;">
+		<div class="container" style="margin-top: 50px;">
 			<div class="row-mt-3">
-				<div class="col-md-10">
+				<div class="col-md-10 offset-1">
 					<div class="card">
 						<div class="card-header">
 							<i class="fas fa-edit"></i> Form Edit Data Kondisi
@@ -72,7 +72,9 @@
 								<?= validation_errors();?>
 							</div>
 							<?php endif ?>
-							<form action="" method="post">
+
+							<?php echo $this->session->flashdata('flash-data') ?>
+							<form action="" method="post" enctype="multipart/form-data">
 
 								<input type="hidden" name="id_lapor" value="<?= $lapor['id_lapor'];?>">
 								<div class="form-group">
@@ -83,7 +85,8 @@
 								<div class="form-group">
 									<label for="judul">Judul </label>
 
-									<input type="text" class="form-control" id="judul" name="judul" value="<?php echo $lapor['judul'] ?>">
+									<input type="text" class="form-control" id="judul" name="judul"
+										value="<?php echo $lapor['judul'] ?>">
 								</div>
 								<div class="form-group">
 									<label for="nama_kategori">Pilih Kategori</label>
@@ -107,7 +110,6 @@
 								<div class="form-group">
 									<label for="kecamatan">Pilih Kecamatan</label>
 									<select class="form-control" id="kecamatan" name="kecamatan">
-
 
 										<option value="Lowokwaru"
 											<?php if ( $lapor['kecamatan'] == "Lowokwaru" ) echo 'selected="selected"'; ?>>
@@ -142,6 +144,53 @@
 										class="form-control"><?= $lapor ['keterangan'] ;?></textarea>
 								</div>
 
+
+								<div class="row">
+											<div class="col-md-4" style="border-right: 1px solid #e0e0e0">
+												<!-- Element Files -->
+												<div class="form-group">
+													<label for="">Tambah Gambar</label>
+													<input type="file" name="foto_tragedi" class="form-control" />
+												</div>
+											</div>
+											<div class="col-md-8">
+											
+												<h5>Galeri Foto</h5>
+
+												<table class="table" style="font-size: 12px">
+													<tr>
+														<th>No</th>
+														<th>Nama File</th>
+														<th>Aksi</th>
+													</tr>
+													<?php
+													
+														$data_foto = array();
+														if ( $lapor['foto_tragedi'] ) { // dia ada fotonya ?
+
+															$data_foto = explode(',', $lapor['foto_tragedi']);
+														}
+
+														if ( count($data_foto) > 0 ) {
+															$nomor = 0;
+															foreach ( $data_foto AS $foto ) {
+
+																$link = base_url('C_Data/onRemovePhotoTragedi?id_lapor='. $lapor['id_lapor'].'&index='. $nomor);
+													?>
+													<tr>
+														<td><?php echo ($nomor + 1) ?></td>
+														<td>
+															<a target="_blank" href="<?php echo base_url('assets/images/'. $foto) ?>"><?php echo $foto ?></a>
+														</td>
+														<td><a href="<?php echo $link ?>" onclick="return confirm('Apakah anda yakin ingin menghapus foto <?php echo $foto ?>')"><i class="fa fa-trash"></i></a></td>
+													</tr>
+
+													<?php $nomor++; } } else echo '<tr><td colspan="2" align="center">Tidak memiliki foto</td></tr>'; ?>
+												</table>
+											</div>
+								</div>
+								
+								
 								<button type="submit" name="edit" class="btn btn-primary float-right"> <i
 										class="fas fa-edit"></i> Edit</button>
 							</form>
@@ -150,7 +199,6 @@
 				</div>
 			</div>
 
-
 		</div>
 		<!-- End of Page Wrapper -->
 
@@ -158,6 +206,4 @@
 		<a class="scroll-to-top rounded" href="#page-top">
 			<i class="fas fa-angle-up"></i>
 		</a>
-
-
 </body>
