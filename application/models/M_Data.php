@@ -183,11 +183,6 @@
                 $photo = $dataLaporById->foto_tragedi;
             }
 
-
-
-
-
-
             $data = [
                 "id_kategori"   =>$this->input->post('nama_kategori',true),
                 "nama_lapor"    =>$this->input->post('nama_lapor',true),
@@ -224,7 +219,6 @@
             return $query->result(); 
         }
         
-
         function processExportPDF() {
 
             $this->load->library('pdf_laporan');
