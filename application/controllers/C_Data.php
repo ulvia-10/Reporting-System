@@ -2,7 +2,7 @@
     
     defined('BASEPATH') OR exit('No direct script access allowed');
     
-    class C_Data extends CI_Controller {
+    class C_data extends CI_Controller {
         public function __construct()
         {
             parent::__construct();
@@ -74,7 +74,7 @@
                 $this->M_Data->ubahdata();
 
                 
-                // redirect('C_Data/index','refresh');
+                // redirect('C_data/index','refresh');
             }
         }   
 
@@ -93,12 +93,12 @@
         public function hapus($id){
             $this->M_Data->hapusdatalpr($id);
             $this->session->set_flashdata('flash-data','dihapus');
-            redirect('C_Data/index','refresh');
+            redirect('C_data/index','refresh');
         }
         public function hapususer($id){
             $this->M_Data->hapusdatausr($id);
             $this->session->set_flashdata('flash-data','dihapus');
-            redirect('C_Data/indexuser','refresh');
+            redirect('C_data/indexuser','refresh');
         }
 
 

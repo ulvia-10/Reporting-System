@@ -19,7 +19,7 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active">
-				<a class="nav-link" href="<?php echo base_url()?>C_lapor_Admin/index">
+				<a class="nav-link" href="<?php echo base_url()?>C_lapor_admin/index">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>Dashboard</span></a>
 			</li>
@@ -30,7 +30,7 @@
 			<!-- Nav Item - Pages Collapse Menu -->
 			<!-- Nav Item - Tables -->
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url();?>C_Data/index/ ">
+				<a class="nav-link" href="<?= base_url();?>C_data/index/ ">
 					<i class="fa fa-clipboard" aria-hidden="true"></i>
 					<span>Data Kondisi Wilayah</span></a>
 			</li>
@@ -39,7 +39,7 @@
 
 			<!-- Nav Item - Tables -->
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url();?>C_Data/indexuser/ ">
+				<a class="nav-link" href="<?= base_url();?>C_data/indexuser/ ">
 
 					<span> <i class="fa fa-clipboard" aria-hidden="true"></i></span>Data User</a>
 			</li>

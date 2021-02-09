@@ -6,7 +6,7 @@
         public function __construct()
         {
             parent::__construct();
-            $this->load->model('M_lapor_User');
+            $this->load->model('M_lapor_user');
             $this->load->library('form_validation');
         }
         public function index()
@@ -14,7 +14,7 @@
  
             // template
 
-            $data['dataCategory'] = $this->M_lapor_User->getDataCategory();
+            $data['dataCategory'] = $this->M_lapor_user->getDataCategory();
             $data['namamu'] = "Ulvia";
 
             $this->load->view('template/V_template_header'); // header
@@ -44,7 +44,7 @@
             else {
                     
                 // kirim data ke model 
-                $this->M_lapor_User->processInsertData();
+                $this->M_lapor_user->processInsertData();
                 
             }
 
@@ -53,7 +53,7 @@
         public function detail($id)
         {
             $data['title']='Detail Kondisi Wilayah ';
-            $data['lapor']= $this->M_lapor_Admin->getabsensiByID($id);
+            $data['lapor']= $this->M_lapor_admin->getabsensiByID($id);
             $this->load->view("admin/lapor/detailabsensi",$data);
         }
         public function edit($id){
@@ -70,19 +70,19 @@
 
             if ($this->form_validation->run() == FALSE){
             #code...    
-            $data['lapor']= $this->M_lapor_Admin->getabsensiByID($id);        
+            $data['lapor']= $this->M_lapor_admin->getabsensiByID($id);        
                 $this->load->view("admin/absensi/editabsensi", $data);
             }
             else{
             #code...
-                $this->M_lapor_Admin->ubahdataabsensi();
+                $this->M_lapor_admin->ubahdataabsensi();
                 $this->session->set_flashdata('flash-data','diedit');
                 redirect('lapor','refresh');
             }
         }   
 
         public function hapus($id){
-            $this->M_lapor_Admin->hapusdatakpw($id);
+            $this->M_lapor_admin->hapusdatakpw($id);
             $this->session->set_flashdata('flash-data','dihapus');
             redirect('lapor','refresh');
         }

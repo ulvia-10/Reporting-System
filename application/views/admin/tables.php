@@ -19,7 +19,7 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active">
-				<a class="nav-link" href="<?php echo base_url()?>C_lapor_Admin/index">
+				<a class="nav-link" href="<?php echo base_url()?>C_lapor_admin/index">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>Dashboard</span></a>
 			</li>
@@ -30,7 +30,7 @@
 			<!-- Nav Item - Pages Collapse Menu -->
 			<!-- Nav Item - Tables -->
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url();?>C_Data/index/ ">
+				<a class="nav-link" href="<?= base_url();?>C_data/index/ ">
 					<i class="fa fa-clipboard" aria-hidden="true"></i>
 					<span>Data Kondisi Wilayah</span></a>
 			</li>
@@ -38,7 +38,7 @@
 
 			<!-- Nav Item - Tables -->
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url();?>C_Data/indexuser/ ">
+				<a class="nav-link" href="<?= base_url();?>C_data/indexuser/ ">
 					<i class="fa fa-clipboard" aria-hidden="true"></i>
 					<span>Data User</span></a>
 			</li>
@@ -141,7 +141,7 @@
 						</a>
 
 						<?php echo $this->session->flashdata('flash-data') ?>
-						<form action="<?php echo base_url('C_Data/exportLaporanPDF') ?>" method="GET">
+						<form action="<?php echo base_url('C_data/exportLaporanPDF') ?>" method="GET">
 							<div class="row">
 
 								<div class="form-group col-md-3">
@@ -156,7 +156,7 @@
 								</div>
 								<div class="col-md-2"><button type="submit" style="margin-top: 35px"
 										class="btn btn-primary">Cetak</button></div>
-								<div class="col-md-2"><a href="<?php echo base_url('C_Data') ?>"
+								<div class="col-md-2"><a href="<?php echo base_url('C_data') ?>"
 										style="margin-top: 35px; margin-left:-30px; " class="btn btn-default">Reset</a>
 								</div>
 							</div>
@@ -206,19 +206,19 @@
 												</td>
 												<td>
 													<!-- detail -->
-													<a href="<?= base_url();?>C_Data/detail/<?= $lpr['id_lapor'];?>"
+													<a href="<?= base_url();?>C_data/detail/<?= $lpr['id_lapor'];?>"
 														class="badge badge-primary"> <i class="fa fa-eye"
 															aria-hidden="true"></i></a></a>
 
-													<a href="<?= base_url();?>C_Data/edit/<?= $lpr['id_lapor'];?>"
+													<a href="<?= base_url();?>C_data/edit/<?= $lpr['id_lapor'];?>"
 														class="badge badge-success"><i class="fa fa-edit "></i> </a>
 													<!-- cetak -->
 
-													<a href="<?= base_url();?>C_Data/getCetakById/<?=$lpr['id_lapor'];?>"
+													<a href="<?= base_url();?>C_data/getCetakById/<?=$lpr['id_lapor'];?>"
 														class="badge badge-secondary " target="_blank"> <i
 															class="fa fa-print"></i></a>
 													<!-- hapus -->
-													<a href="<?= base_url();?>C_Data/hapus/<?=$lpr['id_lapor'];?>"
+													<a href="<?= base_url();?>C_data/hapus/<?=$lpr['id_lapor'];?>"
 														class="badge badge-danger "> <i class="fa fa-trash"
 															aria-hidden="true"></i></a>
 												</td>

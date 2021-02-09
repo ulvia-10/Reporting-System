@@ -2,18 +2,18 @@
     
     defined('BASEPATH') OR exit('No direct script access allowed');
     
-    class C_lapor_Admin extends CI_Controller {
+    class C_lapor_admin extends CI_Controller {
         public function __construct()
         {
             parent::__construct();
-            $this->load->model('M_Data');
+            $this->load->model('M_data');
             $this->load->library('form_validation');
         } 
         public function index()
         {
             $data = array (
-                'getUser' =>  $this->M_Data->get_chart_user(),
-                'getLapor' => $this->M_Data->get_chart_lapor()
+                'getUser' =>  $this->M_data->get_chart_user(),
+                'getLapor' => $this->M_data->get_chart_lapor()
             );
             
             $this->load->view('template/V_template_admin_header',$data);
@@ -44,7 +44,7 @@
             else{
                 $upload = $this->M_lapor->upload();
                 if($upload ['result'] == 'success'){
-                    $this->M_Data->tambahdatalapor($upload);
+                    $this->M_data->tambahdatalapor($upload);
                     $this->session->set_flashdata('flash-data','ditambahkan');
                     redirect('lapor','refresh');
                 }else{
@@ -56,7 +56,7 @@
         public function detail($id)
         {
             $data['title']='Detail Kondisi Wilayah ';
-            $data['lapor']= $this->M_lapor_Admin->getabsensiByID($id);
+            $data['lapor']= $this->M_lapor_admin->getabsensiByID($id);
             $this->load->view("admin/lapor/detailabsensi",$data);
         }
         public function edit($id){
@@ -69,19 +69,19 @@
 
             if ($this->form_validation->run() == FALSE){
             #code...    
-            $data['lapor']= $this->M_lapor_Admin->getabsensiByID($id);        
+            $data['lapor']= $this->M_lapor_admin->getabsensiByID($id);        
                 $this->load->view("admin/absensi/editabsensi", $data);
             }
             else{
             #code...
-                $this->M_lapor_Admin->ubahdataabsensi();
+                $this->M_lapor_admin->ubahdataabsensi();
                 $this->session->set_flashdata('flash-data','diedit');
                 redirect('lapor','refresh');
             }
         }   
 
         public function hapus($id){
-            $this->M_lapor_Admin->hapusdatakpw($id);
+            $this->M_lapor_admin->hapusdatakpw($id);
             $this->session->set_flashdata('flash-data','dihapus');
             redirect('lapor','refresh');
         }

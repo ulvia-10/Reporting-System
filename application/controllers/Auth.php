@@ -18,7 +18,7 @@ class Auth extends CI_Controller
 
             $data['title'] = 'Badan Kesatuan Bangsa Dan Politik';
             $this->load->view('template/auth_header', $data);
-            $this->load->view('auth/login');
+            $this->load->view('Auth/login');
             $this->load->view('template/auth_footer');
         } else {
             // validation succes
@@ -46,7 +46,7 @@ class Auth extends CI_Controller
                     ];
                     $this->session->set_userdata($data);
                     if ($user['role_id'] == "admin") { // admin
-                        redirect('C_Data');
+                        redirect('C_data');
                     
                     } else {
                         redirect('C_report');

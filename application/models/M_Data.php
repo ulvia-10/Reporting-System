@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
     
-    class M_Data extends CI_Model {
+    class M_data extends CI_Model {
         public function count_all(){
             return $this->db->count_all('lapor'); // Untuk menghitung semua data lapor
           }
@@ -152,7 +152,7 @@
 
                     $msg = '<div class="alert alert-danger">Informasi pelaporan gagal diperbarui <br> <p>'.$upload_error.'</p> <small>Pada tanggal '.date('d F Y H.i A').'</small></div>';
                     $this->session->set_flashdata('flash-data', $msg);
-                    redirect('C_Data/edit/'. $id_lapor);
+                    redirect('C_data/edit/'. $id_lapor);
 
 
                 } else {
@@ -199,20 +199,20 @@
 
             $msg = '<div class="alert alert-info">Informasi pelaporan berhasil diperbarui <br><small>Pada tanggal '.date('d F Y H.i A').'</small></div>';
             $this->session->set_flashdata('flash-data', $msg);
-            redirect('C_Data/edit/'. $id_lapor);
+            redirect('C_data/edit/'. $id_lapor);
             
         }    
 
         public function hapusdatalpr($id){
             $this->db->where('id_lapor',$id);
             $this->db->delete('lapor');
-            redirect('C_Data/index','refresh');
+            redirect('C_data/index','refresh');
         }
         
         public function hapusdatausr($id){
             $this->db->where('id_user',$id);
             $this->db->delete('user');
-            redirect('C_Data/indexuser','refresh');
+            redirect('C_data/indexuser','refresh');
         }
         public function datatabels(){
             $query = $this->db->order_by('id_lapor', 'ASC')->get('lapor');
@@ -414,7 +414,7 @@
             $this->db->where('id_lapor', $id_lapor);
             $this->db->update('lapor', $dataUpdate);
 
-            redirect('C_Data/edit/'. $id_lapor);
+            redirect('C_data/edit/'. $id_lapor);
 
 
             /**

@@ -30,7 +30,7 @@
 			<!-- Nav Item - Pages Collapse Menu -->
 			<!-- Nav Item - Tables -->
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url();?>C_Data/index/ ">
+				<a class="nav-link" href="<?= base_url();?>C_data/index/ ">
 					<i class="fa fa-clipboard" aria-hidden="true"></i>
 					<span>Data Kondisi Wilayah</span></a>
 			</li>
@@ -38,7 +38,7 @@
 
 			<!-- Nav Item - Tables -->
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url();?>C_Data/indexuser/ ">
+				<a class="nav-link" href="<?= base_url();?>C_data/indexuser/ ">
 					<i class="fa fa-clipboard" aria-hidden="true"></i>
 					<span>Data User</span></a>
 			</li>
@@ -46,7 +46,7 @@
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url();?>C_Login/index ">
+				<a class="nav-link" href="<?= base_url();?>C_login/index ">
 					<i class="fa fa-power-off" aria-hidden="true"></i>
 					<span> Log Out</span></a>
 
@@ -175,7 +175,7 @@
 															$nomor = 0;
 															foreach ( $data_foto AS $foto ) {
 
-																$link = base_url('C_Data/onRemovePhotoTragedi?id_lapor='. $lapor['id_lapor'].'&index='. $nomor);
+																$link = base_url('C_data/onRemovePhotoTragedi?id_lapor='. $lapor['id_lapor'].'&index='. $nomor);
 													?>
 													<tr>
 														<td><?php echo ($nomor + 1) ?></td>

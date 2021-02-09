@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
     
-    class M_lapor_User extends CI_Model {
+    class M_lapor_user extends CI_Model {
    
         
         // get data category
