@@ -72,9 +72,6 @@
 							<center>
 								<h5 class="card-title"><strong><?= $lapor['nama_lapor']; ?></strong></h5>
 							</center>
-
-
-
 							<?php
 							$src = 'https://pertaniansehat.com/v01/wp-content/uploads/2015/08/default-placeholder.png';
 

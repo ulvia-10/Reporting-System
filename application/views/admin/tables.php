@@ -132,7 +132,7 @@
 					<!-- Collapsable Card Example Filter Data-->
 					<div class="card shadow mb-2">
 						<!-- Card Header - Accordion -->
-						<a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" id="id="
+						<a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" id="
 							multiCollapseExample1" role="button" aria-expanded="true"
 							aria-controls="collapseCardExample">
 							<h6 class="m-0 font-weight-bold text-primary"> <i class="fa fa-print"
